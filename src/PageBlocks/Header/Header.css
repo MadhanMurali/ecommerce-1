@@ -1,0 +1,16 @@
+.header-logo {
+    margin-left: 18px !important;
+}
+
+.header-logo-img {
+    padding: 10px 0;
+    width: 150px;
+}
+
+.categories-nav {
+    min-height: 27px !important;
+}
+
+.search-bar-nav {
+    margin-bottom: 0px !important;
+}

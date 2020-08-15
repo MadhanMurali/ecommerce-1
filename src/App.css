@@ -1,0 +1,78 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.material-icons {
+  display: inline-flex;
+  vertical-align: top;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.btn{
+  border: 1px solid #d50000;
+}
+
+.valign-wrapper { /* vertical align fix: materialize css*/
+  flex-wrap: wrap;
+}
+
+/*chrome search bar fix*/
+nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+  height: 56px !important; 
+}
+
+.input-field label {
+  -webkit-transform: translateY(0px) !important;
+  transform: translateY(0px) !important;
+}
+
+@media only screen and (min-width: 601px) {
+  nav .nav-wrapper form, nav .nav-wrapper form .input-field{
+    height: 64px !important; 
+  }
+}
+/*chrome search bar fix*/
+
+/* Placeholder color*/
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #263238;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ color:    #263238;
+ opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color:    #263238;
+ opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:    #263238;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+ color:    #263238;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+ color:    #263238;
+ opacity:  1;
+}
+/* Placeholder color*/

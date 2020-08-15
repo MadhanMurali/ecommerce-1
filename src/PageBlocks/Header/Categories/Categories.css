@@ -1,0 +1,18 @@
+.categories > li > a {
+    padding: 3px;
+    height: 27px;
+    line-height: 27px !important;
+}
+
+.categories > li > a > i, .categories-links > li {
+    height: 27px;
+    line-height: 27px !important;
+}
+
+.categories-tab-mobile > a > i {
+    line-height: 36px !important;
+}
+
+.categories-tab-mobile > a {
+    border: none;
+}

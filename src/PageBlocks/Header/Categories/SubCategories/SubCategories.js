@@ -8,10 +8,19 @@
 
  import AnchorWithLi from '../../../../Utilities/Link/AnchorWithLi/AnchorWithLi';
 
- const Column = ({column_entry, column_spliting}) => {
+ const grid = {
+    1: "s12",
+    2: "s6",
+    3: "s4",
+    4: "s3",
+    6: "s2",
+    12: "s1",
+ };
+
+ const Column = ({column_entry, column_spliting, total_column}) => {
     if (column_spliting) {
         return (
-            <div className="col s6 sub-categories-column">
+            <div className={"col " + grid[total_column] + " sub-categories-column"}>
                 {column_entry}
             </div>
         );
@@ -67,7 +76,11 @@
     const list = SubCategoiesList.map( 
         (sub_category) => {
             return (
-                <Column column_entry={sub_category} column_spliting={column_spliting}/>
+                <Column 
+                    column_entry={sub_category} 
+                    column_spliting={column_spliting} 
+                    total_column={SubCategoiesList.length}
+                />
             )
         }                        
     )

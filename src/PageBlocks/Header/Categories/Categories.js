@@ -45,7 +45,7 @@ const Categories = ({categories}) => {
                         <SubCategoies 
                             category_name={category.name} 
                             sub_categoies={subCategories} 
-                            totalEntriesPerColumn={4}
+                            totalEntriesPerColumn={3}
                         />
                     }
                 </>

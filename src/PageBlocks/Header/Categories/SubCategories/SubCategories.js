@@ -35,9 +35,9 @@
  const SubCategoies = ({sub_categoies, category_name, totalEntriesPerColumn}) => {
 
     useEffect( () => {
-        const dropdowns = document.querySelectorAll(".dropdown-trigger");
+        let dropdowns = document.querySelectorAll(".sub-categories-dropdown");
 
-        const options = {
+        let options = {
             constrainWidth: false,
             coverTrigger: false,
             closeOnClick: true,

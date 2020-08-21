@@ -34,7 +34,7 @@ const Categories = ({categories}) => {
             return (
                 <>
                     <AnchorWithLi
-                        other_classes="dropdown-trigger"
+                        other_classes="dropdown-trigger sub-categories-dropdown"
                         key={category.id}
                         link_color_class={"white-text"}
                         title={category.name}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const AnchorWithLi = ({icon_name, link_color_class, other_classes, title, href, data_target, using_router}) => {
+const AnchorWithLi = ({icon_name, li_classes, link_color_class, other_classes, title, href, data_target, using_router}) => {
 
     const link = (using_router !== true)
                     ?   <a href={href} data-target={data_target} className={ link_color_class + " " + other_classes }>
@@ -12,7 +12,7 @@ const AnchorWithLi = ({icon_name, link_color_class, other_classes, title, href, 
                         </Link>
 
     return (
-        <li>
+        <li className={li_classes}>
            {link}
         </li>
     );

@@ -1,0 +1,20 @@
+.product-pricing {
+    font-weight: 400;
+    font-size: 35px;
+}
+
+#variant-select {
+    padding: 0;
+}
+
+.variant-select-column {
+    padding: 0 !important;
+}
+
+.wishlist-btn {
+    width: 189px;
+}
+
+.cart-btn {
+    width: 189px;
+}

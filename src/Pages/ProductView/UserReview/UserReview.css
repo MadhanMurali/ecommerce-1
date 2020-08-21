@@ -1,0 +1,25 @@
+.user-review-date {
+    font-size: 13px;
+    position: relative;
+    top: -3.6rem;
+    margin-bottom: -3.6rem;
+}
+
+@media only screen and (max-width: 993px) {
+    .user-review-date {
+        top: -3.8rem !important;
+        margin-bottom: -3.8rem !important;
+    }
+}
+
+.user-review-username {
+    border: none;
+    cursor: unset;
+    position: relative;
+    top: -1.5em;
+    margin-bottom: -1.5rem;
+}
+
+.user-review-rating > svg{
+    width: 20px;
+}

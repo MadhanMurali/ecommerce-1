@@ -5,7 +5,6 @@ import M from 'materialize-css';
 import Product from './Product/Product';
 import "./ProductView.css";
 
-import ProductImage from '../../assets/img/product/Product Sample.jpg';
 import Description from './Description/Description';
 import AnchorWithLi from '../../Utilities/Link/AnchorWithLi/AnchorWithLi';
 import UserReview from './UserReview/UserReview';

@@ -12,7 +12,8 @@ const Footer = lazy( () => import('./PageBlocks/Footer/Footer') );
 const Home = lazy( () => import('./Pages/Home/Home') );
 const Products = lazy( () => import('./Pages/Products/Products') );
 const ProductView = lazy( () => import('./Pages/ProductView/ProductView') );
-
+const SignupSM=lazy( () => import('./Pages/Account/signup_sm') );
+const LoginSM=lazy( () => import('./Pages/Account/login_sm') );
 function App() {
   return (
     <div className="App">
@@ -27,6 +28,8 @@ function App() {
             </Route>
             <Route exact path="/product-view">
               <ProductView />
+            <Route  path="/login" component={LoginSM}  />
+            <Route  path="/signup" component={SignupSM}  />
             </Route>
           </Switch>
           <Footer />

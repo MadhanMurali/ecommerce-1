@@ -28,9 +28,10 @@ function App() {
             </Route>
             <Route exact path="/product-view">
               <ProductView />
+            
+            </Route>
             <Route  path="/login" component={LoginSM}  />
             <Route  path="/signup" component={SignupSM}  />
-            </Route>
           </Switch>
           <Footer />
         </Suspense>

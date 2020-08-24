@@ -10,10 +10,13 @@ import AnchorButtonWithLi from '../../../Utilities/Link/AnchorButtonWithLi/Ancho
 const SmallScreenSideMenu = ({menu_button_color_class, link_color_class}) => {
 
     useEffect(() => {
-        let sideNav = document.querySelectorAll('.sidenav');
+        const sideNav = document.querySelectorAll('.sidenav');
 
         const options = {
+            inDuration: 50,
+            outDuration: 50,
             edge: 'right',
+            draggable: true,
         }
 
         M.Sidenav.init(sideNav, options);

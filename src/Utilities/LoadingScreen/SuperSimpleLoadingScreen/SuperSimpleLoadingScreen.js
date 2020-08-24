@@ -1,11 +1,11 @@
 import React from 'react';
 
-//NEED TO TEST!!!
+import './SuperSimpleLoadingScreen.css';
 
 const SuperSimpleLoadingScreen = () => {
     return (
-        <div className="super-simple-loading-screen">
-            <p class="super-simple-loading">Loading dots</p>
+        <div className="super-simple-loading-screen valign-wrapper">
+            <h4 className="super-simple-loading">Loading...</h4>
         </div>
     );
 }

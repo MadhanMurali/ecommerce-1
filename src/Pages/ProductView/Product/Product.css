@@ -1,0 +1,122 @@
+.product-pricing {
+    font-weight: 400;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+#variant-select {
+    padding: 0;
+}
+
+.variant-select-column {
+    padding: 0 !important;
+}
+
+.wishlist-btn {
+    width: 189px;
+}
+
+.cart-btn {
+    width: 189px;
+}
+
+
+.product-photo-focussed {
+    width: 18rem;
+    height: 22rem;
+    margin: 0 auto 0 auto;
+}
+
+.product-photo-collection {
+    height: 14.7rem;
+    margin: 0 auto 0 auto;
+    overflow-y: hidden;
+}
+
+@media only screen and (max-width: 991px) {
+    .product-photo-collection {
+        height: 15.6rem;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .product-photo-collection {
+        height: 15.2rem;
+    }
+}
+
+.product-photo-collection::-webkit-scrollbar {
+    display: none;
+}
+
+.product-photo-collection-icon-div {
+    width: 57px;
+    height: 68px;
+    margin: 4px auto 4px auto;
+
+    transition: transform .5s ease;
+}
+
+.product-photo-collection-icon > img {
+    width: 57px;
+    height: 68px;
+    margin: 0 auto 0 auto;
+}
+
+
+.product-photo-collection-prev-btn-div {
+    width: 3.8rem;
+    margin: 0 auto 0 auto;
+}
+
+.product-photo-collection-prev-para {
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.product-photo-collection-next-btn-div {
+    width: 3.8rem;
+    margin: 0 auto 0 auto;
+}
+
+.product-photo-collection-next-para {
+    margin-top: 4px;
+    text-align: center;
+}
+
+#product-carousel > .indicators > li {
+    background-color: #4db6ac !important;
+}
+
+#product-carousel > .indicators > .active {
+    background-color: teal !important;
+}
+
+@media only screen and (min-width: 601px) {
+    #product-carousel > .indicators {
+        display: none !important;
+    }
+}
+
+
+/* .product-photo-collection-prev-para-small-screen {
+    width: 24px;
+}
+.product-photo-collection-next-para-small-screen {
+    width: 24px;
+}
+
+.product-photo-collection-small-screen-column {
+    overflow-x: scroll;
+    width: 195px;
+}
+
+.product-photo-collection-small-screen-div {
+    width: 520px;
+}
+
+.product-photo-collection-icon-small-screen > img {
+    width: 57px;
+    height: 68px;
+    margin: 5px 3.5px;
+} */

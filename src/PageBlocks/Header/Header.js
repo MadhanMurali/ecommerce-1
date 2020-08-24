@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 
 import './Header.css'
@@ -37,9 +38,9 @@ const Header = () => {
             <nav className="nav-extended teal lighten-2">
                 <div className="nav-wrapper">
 
-                    <a href="#!" className="brand-logo header-logo left">
+                    <Link to="/" className="brand-logo header-logo left">
                         <img src={Logo} alt="Logo" className="header-logo-img"></img>
-                    </a>
+                    </Link>
 
                     <LargeScreenList button_color_class="teal darken-3"/>
 

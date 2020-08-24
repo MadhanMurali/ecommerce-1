@@ -1,0 +1,57 @@
+
+ 
+
+
+
+  /* .input-field input[type=date]:focus + label,
+  .input-field input[type=text]:focus + label,
+  .input-field input[type=email]:focus + label,
+  .input-field input[type=password]:focus + label {
+    color: #e91e63;
+  }
+
+  .input-field input[type=date]:focus,
+  .input-field input[type=text]:focus,
+  .input-field input[type=email]:focus,
+  .input-field input[type=password]:focus {
+    border-bottom: 2px solid #e91e63;
+    box-shadow: none;
+  } */
+
+    
+
+.formGroup
+     { 
+       display: inline-block; 
+        padding: 32px 48px 0px 48px;
+        border: 1px solid #EEE;
+    } 
+    
+   
+
+
+
+
+.left{
+  float:left;
+  margin-left:35px;
+  
+}
+.right{
+  float:right;
+  margin-right:35px;
+  
+}
+
+@media only screen and (min-width: 601px) {
+  .vertical_line_right{
+    border-right: 1px solid rgb(3, 3, 3);
+  
+  }
+  .vertical_line_left{
+    border-left: 1px solid rgb(3, 3, 3);
+  
+  }
+}
+
+

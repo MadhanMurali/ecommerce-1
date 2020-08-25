@@ -23,14 +23,44 @@
 
 .product-photo-focussed {
     width: 18rem;
-    height: 22rem;
+    max-height: 22rem;
     margin: 0 auto 0 auto;
+    cursor: crosshair;
+}
+
+@media only screen and (max-width: 992px) {
+    .product-photo-focussed {
+        cursor: default !important;
+    }
+}
+
+.product-photo-focussed-background {
+    width: 18rem;
+    max-height: 22rem;
+    margin: 0 auto 0 auto;
+    position: relative;
 }
 
 .product-photo-collection {
     height: 14.7rem;
     margin: 0 auto 0 auto;
     overflow-y: hidden;
+}
+
+.product-photo-zoomed-div {
+    position: relative;
+    z-index: 2;
+    width: 270px;
+    height: 323.83px;
+    transform: translateX(50px);
+    overflow: hidden;
+    display: none;
+}
+
+.product-photo-zoomed {
+    width: 270px;
+    height: 323.83px;
+    transform: translateX(270px) translateY(323.83px) scale( 3, 3);
 }
 
 @media only screen and (max-width: 991px) {

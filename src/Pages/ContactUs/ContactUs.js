@@ -19,17 +19,17 @@ const ContactUs = () => {
                     <div className="card-panel">
                         <h5>Mail Us</h5>
                         <form>
-                            <div class="input-field">
+                            <div className="input-field">
                                 <input id="query-name" type="text" className="validate"/>
-                                <label for="query-name">Your Good Name</label>
+                                <label htmlFor="query-name">Your Good Name</label>
                             </div>
-                            <div class="input-field">
+                            <div className="input-field">
                                 <input id="query-email" type="email" className="validate"/>
-                                <label for="query-email">Your Email</label>
+                                <label htmlFor="query-email">Your Email</label>
                             </div>
-                            <div class="input-field">
+                            <div className="input-field">
                                 <textarea id="query-text-area" className="materialize-textarea" data-length="500"></textarea>
-                                <label for="query-text-area">Your Query</label>
+                                <label htmlFor="query-text-area">Your Query</label>
                             </div>
                             <button className="btn waves-effect waves-light teal darken-3">Submit</button>
                         </form>
@@ -44,7 +44,7 @@ const ContactUs = () => {
                             <div className="col s12 m12 l6">
                                 <div className="" id="contact-us-address-card">
                                     <p>62, Station Rd, Radha Nagar, <br/>Chromepet, Chennai, <br/>Tamil Nadu - 600044</p>
-                                    <p>Tel: <a class="red-text accent-3" href="tel:+91 90 3456 7890"><strong>+91 90 3456 7890</strong></a></p>
+                                    <p>Tel: <a className="red-text accent-3" href="tel:+91 90 3456 7890"><strong>+91 90 3456 7890</strong></a></p>
                                 </div>
                             </div>
                         </div>
@@ -53,6 +53,7 @@ const ContactUs = () => {
             </div>
             <div>
                 <iframe 
+                    title="address-google-map"
                     id="contact-us-address-map"
                     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15553.320488907235!2d80.1442488!3d12.9507152!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x810a5fdb9adac981!2sAzacus%20Techno%20Solutions%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1598430368611!5m2!1sen!2sin"
                     // width="600" height="450" 

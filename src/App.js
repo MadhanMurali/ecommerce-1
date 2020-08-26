@@ -14,6 +14,7 @@ const Products = lazy( () => import('./Pages/Products/Products') );
 const ProductView = lazy( () => import('./Pages/ProductView/ProductView') );
 const SignupSM=lazy( () => import('./Pages/Account/signup_sm') );
 const LoginSM=lazy( () => import('./Pages/Account/login_sm') );
+const Cart=lazy( () => import('./Pages/Cart/cart') );
 function App() {
   return (
     <div className="App">
@@ -32,6 +33,7 @@ function App() {
             </Route>
             <Route  path="/login" component={LoginSM}  />
             <Route  path="/signup" component={SignupSM}  />
+            <Route  path="/cart" component={Cart}  />
           </Switch>
           <Footer />
         </Suspense>

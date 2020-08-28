@@ -3,116 +3,11 @@ import React, { Component } from 'react';
 
 import './cart.css';
 
-
+import ProductList from './cartProdList';
+import Summary from './cartSummary' ;
   
-  function ProductList(props) {
-      
-    return (
-      
-          <div className="cart-container cart-products">
-          
-          <table class="centered " >
-            <thead>
-              <tr>
-                  <th>Product</th>
-                  <th>Product Description</th>
-                  <th>Item Price</th>
-                  <th>Quantity</th>
-                  <th>Subtotal</th>
-                  <th> </th>
-              </tr>
-            </thead>
-            {props.products.map((product, index) => {
-            return (
-                
-              <tbody className="items-in-cart" key={index}>
-               <tr>
-                <td><a href="#">
-                      <img src={product.image} alt={product.name} />
-                    </a></td>
-                <td ><a href="#">{product.name}</a></td>
-                <td>{formatCurrency(product.price)}</td>
-                <td className="cart-detail cart-quantity">      
-                    <input
-                      type="number"
-                      className="cart-quantity cart-input"
-                      step="1"
-                      value={product.quantity}
-                      onChange={props.onChangeProductQuantity.bind(this, index)}
-                    /></td>
-                <td>{formatCurrency(product.quantity*product.price)}</td>
-                <td><a class="btn-floating red">
-                  <i class="material-icons" onClick={props.onRemoveProduct.bind(this, index)}>delete</i></a>
-                </td>
-               </tr>
-            </tbody>    );
-          })}
-          </table>
-        </div>
-     );
-  }
   
-  function Summary(props) {
-    const subTotal = props.products.reduce((total, product) => {
-      return total + product.price * +product.quantity;
-    }, 0);
-    const discount = subTotal * props.discount / 100;
-    const tax = props.tax;
-    const total = subTotal - discount + tax;
-    const itemCount = props.products.reduce((quantity, product) => {
-        return quantity + +product.quantity;
-      },0);
-    return (
-      <div className="row">
-        <div className="col m6 l6"  ></div>
-        <div className="col m6 l6">
-            
-        <div className="cart-promotion ">
-
-          <div className="row">
-            <div className="col s6 m7 l9"></div>
-            <div className="col s6 m5 l3">
-            <label htmlFor="promo-code" className="cart-label">Have a Promo Code?</label>
-          <input type="text" className="cart-input" onChange={props.onEnterPromoCode} />
-          <button type="button" className="cart-button"onClick={props.checkPromoCode} />
-          </div>
-        </div>
-       
-         
-        </div>
   
-        <div className=" cart-summary">
-            
-
-          <ul className="cart-ul">
-              <li className="cart-li">
-              <span className="cart-count">{itemCount} items in the cart</span>
-              </li>
-            <li className="cart-li">
-              Subtotal <span>{formatCurrency(subTotal)}</span>
-            </li>
-            {discount > 0 && (
-              <li className="cart-li">
-                Discount <span>{formatCurrency(discount)}</span>
-              </li>
-            )}
-            <li className="cart-li">
-              Delivery Charge <span>{formatCurrency(tax)}</span>
-            </li>
-            <li className="total cart-li">
-              Total <span>{formatCurrency(total)}</span>
-            </li>
-            
-          </ul>
-        </div>
-  
-        <div className="cart-checkout">
-          <button type="button" className="cart-button">Check Out</button>
-        </div>
-        </div>
-      </div>
-    );
-  }
   
  export default class Cart extends React.Component {
     constructor(props) {
@@ -161,7 +56,7 @@ import './cart.css';
       const value = event.target.value;
       const valueInt = parseInt(value);
   
-      // Minimum quantity is 1, maximum quantity is 100, can left blank to input easily
+      
       if (value === "") {
         products[index].quantity = value;
       } else if (valueInt > 0 && valueInt < 100) {
@@ -213,7 +108,7 @@ import './cart.css';
                 onChangeProductQuantity={this.onChangeProductQuantity}
                 onRemoveProduct={this.onRemoveProduct}
               />
-  
+
               <Summary
                 products={products}
                 discount={this.state.discount}
@@ -221,6 +116,9 @@ import './cart.css';
                 onEnterPromoCode={this.onEnterPromoCode}
                 checkPromoCode={this.checkPromoCode}
               />
+            <div className="cart-checkout">
+          <button type="button" className="cart-button">Check Out</button>
+            </div>
             </div>
           ) : (
             <div className="cart-empty-product">
@@ -234,11 +132,4 @@ import './cart.css';
   }
   
   
-  
-  function formatCurrency(value) {
-    return Number(value).toLocaleString("en-IN", {
-      style: "currency",
-      currency: "INR"
-    });
-  }
   

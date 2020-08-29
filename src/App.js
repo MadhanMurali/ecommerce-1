@@ -17,6 +17,7 @@ const LoginSM=lazy( () => import('./Pages/Account/login_sm') );
 const Cart=lazy( () => import('./Pages/Cart/cart') );
 const WishList=lazy( () => import('./Pages/Cart/wish') );
 const ContactUs = lazy( () => import('./Pages/ContactUs/ContactUs') );
+const Profile = lazy( () => import('./Pages/Account/Profile/Profile'));
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
             <Route  path="/wish-list" component={WishList}  />
             <Route exact path="/contact-us">
               <ContactUs />
+            </Route>
+            <Route path="/profile">
+              <Profile />
             </Route>
           </Switch>
           <Footer />

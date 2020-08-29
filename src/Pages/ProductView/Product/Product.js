@@ -44,16 +44,104 @@ const slideUp = (event, productIconCount, currentProductIconCount, setCurrentPro
     setCurrentProductIconCount(currentProductIconCount-1);
 }
 
-const moveToProductImage = (event, productCarouselInstance, target) => {
+const moveToProductImage = (event, productCarouselInstance, target, setProductZoomed) => {
     event.preventDefault();
     productCarouselInstance.set(target);
+    setProductZoomed(target);
+}
+
+const showProductZoomedImage = (event) => {
+    let checkSmallAndMediumScreen = window.matchMedia("only screen and (max-width: 992px)");
+
+    if ( checkSmallAndMediumScreen.matches ) {
+        return;
+    }
+    let productZoomedImage = document.getElementsByClassName("product-photo-zoomed-div")[0];
+
+    productZoomedImage.style.display = "block";
+}
+
+const hideProductZoomedImage = (event) => {
+    let checkSmallAndMediumScreen = window.matchMedia("only screen and (max-width: 992px)");
+
+    if ( checkSmallAndMediumScreen.matches ) {
+        return;
+    }
+    let productZoomedImage = document.getElementsByClassName("product-photo-zoomed-div")[0];
+
+    productZoomedImage.style.display = "none";
+}
+
+const panZoomedImage = ( event ) => {
+
+    let checkSmallAndMediumScreen = window.matchMedia("only screen and (max-width: 992px)");
+
+    if ( checkSmallAndMediumScreen.matches ) {
+        return;
+    }
+
+    let rect = event.target.getBoundingClientRect();
+    let x = parseInt(event.clientX - rect.x);
+    let y = parseInt(event.clientY - rect.y);
+
+    let productZoomedImage = document.getElementsByClassName("product-photo-zoomed")[0];
+
+    if ( x>=0 && x <= 45 && y >= 0 && y <= 40.47875) // top left corner
+        return;
+
+    if ( x>=0 && x <= 45 && y <= 323.833 && y >= 256) // bottom left corner
+        return;
+
+    if ( x>=225 && x <= 270 && y >= 0 && y <= 40.47875) // top right corner
+        return;
+
+    if ( x>=225 && x <= 270 && y <= 323.833 && y >= 256) // bottom right corner
+        return;
+
+    if ( x>45 && x < 225 && y >= 0 && y <= 40.47875) // top center corner
+    {
+        productZoomedImage.style.transform = "translate(" + (270 - (-45 + x) * 3) + "px," 
+                                            + ( 323.833 ) + "px) scale( 3, 3)";
+        return;
+    }
+
+    if ( x>45 && x < 225 && y <= 323.833 && y >= 256 ) // bottom center corner
+    {
+        productZoomedImage.style.transform = "translate(" + (270 - (-45 + x) * 3) + "px," 
+                                            + ( 323.833 - (-40.47875 + 256) * 3) + "px) scale( 3, 3)";
+        return;
+    }
+
+    if ( x<=45 && x >= 0 && y < 256 && y > 40.47875 ) // left center corner
+    {
+        productZoomedImage.style.transform = "translate(" + (270) + "px," 
+                                            + ( 323.833 - (-40.47875 + y) * 3) + "px) scale( 3, 3)";
+        return;
+    }
+
+    if ( x<=270 && x >= 225 && y < 256 && y > 40.47875 ) // right center corner
+    {
+        productZoomedImage.style.transform = "translate(" + (270 - (-45 + 225) * 3) + "px," 
+                                            + ( 323.833 - (-40.47875 + y) * 3) + "px) scale( 3, 3)";
+        return;
+    }
+
+    productZoomedImage.style.transform = "translate(" + (270 - (-45 + x) * 3) + "px," 
+                                        + ( 323.833 - (-40.47875 + y) * 3) + "px) scale( 3, 3)";
 }
 
 const Product = () => {
 
+    const productImageArray = [
+        ProductImage, ProductImage2, ProductImage3,
+        ProductImage4, ProductImage5, ProductImage6,
+        ProductImage7, ProductImage8
+    ]
+
     const [productIconCount, setProductIconCount] = useState(0);
     const [currentProductIconCount, setCurrentProductIconCount] = useState(0);
     const [productCarouselInstance, setProductCarouselInstance] = useState(0);
+    const [productZoomed, setProductZoomed] = useState(0);
 
     useEffect( () => {
 
@@ -112,49 +200,49 @@ const Product = () => {
                     <div className="product-photo-collection">                        
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 0)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 0, setProductZoomed)} >
                                 <img src={ProductImage} alt="product"></img>
                             </a>
                         </div>
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 1)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 1, setProductZoomed)} >
                                 <img src={ProductImage2} alt="product"></img>
                             </a>
                         </div>
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 2)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 2, setProductZoomed)} >
                                 <img src={ProductImage3} alt="product"></img>
                             </a>
                         </div>
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 3)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 3, setProductZoomed)} >
                                 <img src={ProductImage4} alt="product"></img>
                             </a>
                         </div>
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 4)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 4, setProductZoomed)} >
                                 <img src={ProductImage5} alt="product"></img>
                             </a>
                         </div>
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 5)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 5, setProductZoomed)} >
                                 <img src={ProductImage6} alt="product"></img>
                             </a>
                         </div>
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 6)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 6, setProductZoomed)} >
                                 <img src={ProductImage7} alt="product"></img>
                             </a>
                         </div>
                         <div className="z-depth-1 product-photo-collection-icon-div">
                             <a className="product-photo-collection-icon" href="#!"
-                                onClick={ e => moveToProductImage(e, productCarouselInstance, 7)} >
+                                onClick={ e => moveToProductImage(e, productCarouselInstance, 7, setProductZoomed)} >
                                 <img src={ProductImage8} alt="product"></img>
                             </a>
                         </div>
@@ -171,19 +259,43 @@ const Product = () => {
                 </div>
 
                 <div className="col s12 m6 l6">
-                    <div id="product-carousel" className="z-depth-3 carousel carousel-slider center product-photo-focussed">
-                        <a className="carousel-item" href="#!"><img src={ProductImage} alt="product"></img></a>
-                        <a className="carousel-item" href="#!"><img src={ProductImage2} alt="product"></img></a>
-                        <a className="carousel-item" href="#!"><img src={ProductImage3} alt="product"></img></a>
-                        <a className="carousel-item" href="#!"><img src={ProductImage4} alt="product"></img></a>
-                        <a className="carousel-item" href="#!"><img src={ProductImage5} alt="product"></img></a>
-                        <a className="carousel-item" href="#!"><img src={ProductImage6} alt="product"></img></a>
-                        <a className="carousel-item" href="#!"><img src={ProductImage7} alt="product"></img></a>
-                        <a className="carousel-item" href="#!"><img src={ProductImage8} alt="product"></img></a>
+                    <div className="product-photo-focussed-background">
+                        <div id="product-carousel" className="z-depth-3 carousel carousel-slider center product-photo-focussed">
+                            <a className="carousel-item">
+                                <img src={ProductImage} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                            <a className="carousel-item">
+                                <img src={ProductImage2} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                            <a className="carousel-item" >
+                                <img src={ProductImage3} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                            <a className="carousel-item" >
+                                <img src={ProductImage4} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                            <a className="carousel-item" >
+                                <img src={ProductImage5} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                            <a className="carousel-item" >
+                                <img src={ProductImage6} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                            <a className="carousel-item" >
+                                <img src={ProductImage7} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                            <a className="carousel-item" >
+                                <img src={ProductImage8} alt="product" onMouseMove={ e => panZoomedImage( e ) } onMouseOver={showProductZoomedImage} onMouseOut={hideProductZoomedImage}></img>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div className="col s3 m3 l3"></div>
+                <div className="col s3 m3 l3">
+
+                    <div className="product-photo-zoomed-div red z-depth-5">
+                        <img src={productImageArray[productZoomed]} className="product-photo-zoomed" alt="product"></img>
+                    </div>
+
+                </div>
 
                 {/** small screen product icons -- incomplete and it may not be required for small screens */}
 

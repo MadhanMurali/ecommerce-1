@@ -20,6 +20,7 @@ const WishList=lazy( () => import('./Pages/Cart/wish') );
 const CheckOut=lazy( () => import('./Pages/checkout/checkout') );
 
 const ContactUs = lazy( () => import('./Pages/ContactUs/ContactUs') );
+const Profile = lazy( () => import('./Pages/Account/Profile/Profile'));
 
 
 function App() {
@@ -44,6 +45,9 @@ function App() {
             <Route  path="/checkout" component={CheckOut}  />           
             <Route exact path="/contact-us">
               <ContactUs />
+            </Route>
+            <Route path="/profile">
+              <Profile />
             </Route>
           </Switch>
           <Footer />

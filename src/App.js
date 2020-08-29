@@ -16,7 +16,11 @@ const SignupSM=lazy( () => import('./Pages/Account/signup_sm') );
 const LoginSM=lazy( () => import('./Pages/Account/login_sm') );
 const Cart=lazy( () => import('./Pages/Cart/cart') );
 const WishList=lazy( () => import('./Pages/Cart/wish') );
+
+const CheckOut=lazy( () => import('./Pages/checkout/checkout') );
+
 const ContactUs = lazy( () => import('./Pages/ContactUs/ContactUs') );
+
 
 function App() {
   return (
@@ -37,6 +41,7 @@ function App() {
             <Route  path="/signup" component={SignupSM}  />
             <Route  path="/cart" component={Cart}  />
             <Route  path="/wish-list" component={WishList}  />
+            <Route  path="/checkout" component={CheckOut}  />           
             <Route exact path="/contact-us">
               <ContactUs />
             </Route>

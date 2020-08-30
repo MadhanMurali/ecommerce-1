@@ -3,6 +3,7 @@ import React from 'react';
 import BasicInfo from './BasicInfo/BasicInfo';
 import Cart from '../../Cart/cart';
 import WishList from '../../Cart/wish';
+import MyOrders from './MyOrders/MyOrders';
 
 import './Profile.css';
 import { Switch, Route, useRouteMatch, useParams, Redirect } from 'react-router-dom';
@@ -18,6 +19,8 @@ const ProfileChildPath = () => {
             return <Cart />
         case 'wishlist':
             return <WishList />
+        case 'my-orders':
+            return <MyOrders />
     }
 }
 
@@ -41,6 +44,10 @@ const Profile = () => {
                         href={`${url}/wishlist`} title="Wishlist"
                         using_router={true}
                         other_classes={"black-text btn-flat"} icon_name={"favorite_border"}/>
+                    <AnchorButton 
+                        href={`${url}/my-orders`} title="My Orders"
+                        using_router={true}
+                        other_classes={"black-text btn-flat"} icon_name={"receipt"}/>
                 </div>
                 <div className="col s12 m12 l12">
                     <Switch>

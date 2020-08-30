@@ -1,0 +1,43 @@
+.my-orders-product-img-div {
+    width: 10rem;
+}
+
+.my-orders-product-img-div > img {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 10px;
+}
+
+.my-orders-product-flex-container {
+    display: flex;
+    align-self: center;
+}
+
+.my-orders-product-options > a {
+    margin: 5px;
+}
+
+.my-orders-product-name-div > p {
+    font-size: 12px;
+    margin: 0;
+}
+
+.my-orders-product-total-price {
+    font-size: 20px !important;
+}
+
+.my-orders-product-order-no, .my-orders-product-address, .my-orders-product-order-status {
+    margin: 0;
+    font-size: 15px;
+    padding: 0 5rem 0 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .my-orders-product-order-no, .my-orders-product-address, .my-orders-product-order-status {
+        padding: 0 0 0 0;
+    }
+}
+
+.my-order {
+    margin-top: 20px;
+}

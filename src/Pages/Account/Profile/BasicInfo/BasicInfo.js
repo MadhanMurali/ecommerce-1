@@ -265,6 +265,7 @@ const BasicInfo = () => {
                 <div id="address-one-modal" className="modal basic-info-modals">
                     <form>
                         <div className="modal-content">
+                            <h6>Address #1</h6>
                             <div className="row">
                                 <div className="input-field col s12 m12 l12">
                                     <input id="address-one-line-one" value={addressOne[0]} type="text" className="validate" onChange={ e => handleAddressOneChange(e, 0) }/>
@@ -372,6 +373,7 @@ const BasicInfo = () => {
                 <div id="address-three-modal" className="modal basic-info-modals">
                     <form>
                         <div className="modal-content">
+                            <h6>Address #3</h6>
                             <div className="row">
                                 <div className="input-field col s12 m12 l12">
                                     <input id="address-three-line-one" value={addressThree[0]} type="text" className="validate" onChange={ e => handleAddressThreeChange(e, 0) }/>

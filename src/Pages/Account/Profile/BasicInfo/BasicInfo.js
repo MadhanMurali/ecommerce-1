@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import M from 'materialize-css';
 
 import OverlappingFattyHr from '../../../../Utilities/Hr/OverlappingFattyHr/OverlappingFattyHr';
-import AnchorButton from '../../../../Utilities/Link/AnchorButton/AnchorButton';
 
 import './BasicInfo.css'
 

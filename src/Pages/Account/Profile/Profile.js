@@ -4,6 +4,7 @@ import BasicInfo from './BasicInfo/BasicInfo';
 import Cart from '../../Cart/cart';
 import WishList from '../../Cart/wish';
 import MyOrders from './MyOrders/MyOrders';
+import TrackOrder from './MyOrders/TrackOrder/TrackOrder';
 
 import './Profile.css';
 import { Switch, Route, useRouteMatch, useParams, Redirect } from 'react-router-dom';
@@ -14,7 +15,7 @@ const ProfileChildPath = () => {
 
     switch(profileChildPath) {
         case 'basic-info':
-            return <BasicInfo />;
+            return <BasicInfo />
         case 'cart':
             return <Cart />
         case 'wishlist':
@@ -56,6 +57,9 @@ const Profile = () => {
                         </Route>
                         <Route exact path={`${path}/:profileChildPath`}>
                             <ProfileChildPath />
+                        </Route>
+                        <Route exact path={`${path}/my-orders/track-order`}>
+                            <TrackOrder />
                         </Route>
                     </Switch>
                 </div>

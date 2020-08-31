@@ -6,6 +6,9 @@ import 'materialize-css/dist/css/materialize.min.css'; // keep this as first css
 import './App.css';
 import SuperSimpleLoadingScreen from './Utilities/LoadingScreen/SuperSimpleLoadingScreen/SuperSimpleLoadingScreen';
 
+//SASS imports
+import "progress-tracker/src/styles/progress-tracker.scss";
+
 //JS imports
 const Header = lazy( () => import('./PageBlocks/Header/Header') );
 const Footer = lazy( () => import('./PageBlocks/Footer/Footer') );

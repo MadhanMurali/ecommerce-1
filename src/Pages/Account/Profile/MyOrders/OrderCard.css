@@ -1,0 +1,43 @@
+.order-card-product-img-div {
+    width: 10rem;
+}
+
+.order-card-product-img-div > img {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 10px;
+}
+
+.order-card-product-flex-container {
+    display: flex;
+    align-self: center;
+}
+
+.order-card-product-options > a {
+    margin: 5px;
+}
+
+.order-card-product-name-div > p {
+    font-size: 12px;
+    margin: 0;
+}
+
+.order-card-product-total-price {
+    font-size: 20px !important;
+}
+
+.order-card-product-order-no, .order-card-product-address, .order-card-product-order-status {
+    margin: 0;
+    font-size: 15px;
+    padding: 0 5rem 0 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .order-card-product-order-no, .order-card-product-address, .order-card-product-order-status {
+        padding: 0 0 0 0;
+    }
+}
+
+.my-order {
+    margin-top: 20px;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {  Link } from "react-router-dom";
+import M from 'materialize-css';
 import './checkout.css';
 
 export default class Shipping extends Component {
@@ -12,6 +13,17 @@ export default class Shipping extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+       
+        
+    }
+    componentDidMount(){
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     var elems = document.querySelectorAll('select');
+        //     var instances = M.FormSelect.init(elems, options);
+        //   });
+        console.log(M);
+        M.AutoInit();
+
     }
 
     handleChange(event) {
@@ -178,14 +190,13 @@ export default class Shipping extends Component {
                                             <div class="input-field col s12">
                                             <i class="material-icons prefix">place</i>
                                                 <select>
-                                                    <option selected id='country' type='text' name='country' class='browser-default ' value={this.state.input.country}
-                                                    onChange={this.handleChange} >Choose your country</option>
+                                                    <option value="" disabled selected>Choose your country</option>
                                                         <option value="1">Option 1</option>
                                                         <option value="2">Option 2</option>
                                                         <option value="3">Option 3</option>
-                                                    <div className='red-text'>{this.state.errors.country}</div>
+                                                    
                                                 </select>
-                                                 <label for='country'>Country</label>
+                                                 <label>Country</label>
                                              
                                             </div>
                                         </div>
@@ -245,12 +256,27 @@ export default class Shipping extends Component {
                                             </div>
                                         </div>
 
-                                        <div class="row">
+                                        {/* <div class="row">
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">place</i>
                                                 <input id='ztate' type='text' name='state' class='validate ' value={this.state.input.ztate}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.ztate}</div>
                                                 <label for='ztate'>State</label>
+                                            </div>
+                                        </div> */}
+
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                            <i class="material-icons prefix">place</i>
+                                                <select>
+                                                    <option value="" disabled selected>Choose your State</option>
+                                                        <option value="1">Option 1</option>
+                                                        <option value="2">Option 2</option>
+                                                        <option value="3">Option 3</option>
+                                                    
+                                                </select>
+                                                 <label>State</label>
+                                             
                                             </div>
                                         </div>
 
@@ -262,14 +288,6 @@ export default class Shipping extends Component {
                                                 <label for='pincode'>PinCode</label>
                                             </div>
                                         </div>
-
-                                        
-
-                                            
-                                       
-                                       
-                                        
-                                        
 
                                         <div class="row center-align">
                                             <button type='submit' name='btn_login' class=' btn btn-large waves-effect indigo center-align'>Continue with Payment</button>

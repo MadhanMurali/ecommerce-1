@@ -17,13 +17,15 @@ export default class Shipping extends Component {
         
     }
     componentDidMount(){
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     var elems = document.querySelectorAll('select');
-        //     var instances = M.FormSelect.init(elems, options);
-        //   });
-        console.log(M);
-        M.AutoInit();
-
+            var elems = document.querySelectorAll('select');
+            const options = {
+                dropdownOptions: {
+                  onCloseStart: () => {
+                    console.log("Close Start from dropdownOptions");
+                  },
+                }
+              };
+            var instances = M.FormSelect.init(elems, options);
     }
 
     handleChange(event) {

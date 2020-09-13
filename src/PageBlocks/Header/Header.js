@@ -1,13 +1,13 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-
-
+import ImageUploader from 'react-images-upload';
+import SearchBar from "material-ui-search-bar";
 import './Header.css'
 
 import Logo from '../../assets/img/header/header-logo-white.png';
 
-import SearchBar from './SearchBar/SearchBar';
+// import SearchBar from './SearchBar/SearchBar';
 import SmallScreenSideMenu from './SmallScreenSideMenu/SmallScreenSideMenu';
 // import SmallScreenModal from './SmallScreenModal/SmallScreenModal';
 import LargeScreenList from './LargeScreenList/LargeScreenList';
@@ -23,7 +23,8 @@ const Header = () => {
 
     const [categories, setCategories] = useState("");
     const [categoriesLoading, setCategoriesLoading] = useState(true);
-
+    const [pictures, setPictures] =  useState([]);
+    const [value, setValue] = useState("");
     useEffect( () => {
         fetch(API + "categories")
             .then(response => response.json())
@@ -32,6 +33,16 @@ const Header = () => {
                 setCategoriesLoading(false);
             });
     }, []);
+
+    const onDrop = (picture) =>  {
+        setPictures(pictures.concat(picture))
+        // this.setState({
+        //     pictures: this.state.pictures.concat(picture),
+        // });
+    }
+    const search_products = (search) => {
+        console.log("searching products", search);
+    }
     
     return (
         <header className="">
@@ -61,7 +72,27 @@ const Header = () => {
                             />
                         </div>
                         <div className="col s12 m12 l4">
-                            <SearchBar color_class="white" icon_color_class="purple-text"/>
+                            {/* <SearchBar color_class="white" icon_color_class="purple-text"/> */}
+                            <SearchBar
+                            value={value}
+                            placeholder={"Search Medicines"}
+                            onChange={(newValue) => {setValue( newValue )}}
+                            onRequestSearch={() => search_products(value)}
+                        />
+
+                            <ImageUploader
+                            withIcon={true}
+                            withLabel = {false}
+                            label= {"Max file size: 5 MB"}
+                            buttonText='Upload Prescription'
+                            onChange={onDrop}
+                            imgExtension={['.jpg', '.jpeg', '.png']}
+                            maxFileSize={5242880}
+                            withPreview = {true}
+                            singleImage={true}
+
+                        />
+                        
                         </div>
                         <div className="col s12 m12 l4"></div>
                     </div>

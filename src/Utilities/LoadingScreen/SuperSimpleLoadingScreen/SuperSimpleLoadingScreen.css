@@ -11,11 +11,19 @@
 /* loading dots */
 
 .super-simple-loading {
-    margin: 0 auto 0 auto;
+    /* margin: 0 auto 0 auto;
     animation: super-simple-loading-text-animation 1s infinite;
     font-family: "Open Sans Condensed Light";
     position: relative;
-    top: -1rem;
+    top: -1rem; */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform: -webkit-translate(-50%, -50%);
+    transform: -moz-translate(-50%, -50%);
+    transform: -ms-translate(-50%, -50%);
+    color:darkred;
 }
   
 @keyframes super-simple-loading-text-animation {

@@ -1,3 +1,4 @@
+@import "../../../node_modules/react-slideshow-image/dist/styles.css";
 .header-logo {
     margin-left: 18px !important;
 }
@@ -13,4 +14,9 @@
 
 .search-bar-nav {
     margin-bottom: 0px !important;
+}
+@media only screen and (min-width: 601px){
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i{
+        line-height: 48px;
+    }
 }

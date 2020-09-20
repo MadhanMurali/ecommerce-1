@@ -1,8 +1,8 @@
 import React from "react";
 import { Fade } from "react-slideshow-image";
-import { Zoom } from "react-slideshow-image";
+// import { Zoom } from "react-slideshow-image";
 
-import image1 from "../../assets/img/slider/slide_1.jpg";
+import image1 from "../../assets/img/slider/slide_6.jpg";
 import image2 from "../../assets/img/slider/slide_2.jpg";
 import image3 from "../../assets/img/slider/slide_3.jpg";
 import image4 from "../../assets/img/slider/slide_4.jpg";
@@ -17,7 +17,8 @@ const zoomOutProperties = {
   infinite: true,
   indicators: true,
   scale: 0.4,
-  arrows: true
+  arrows: true,
+  pauseOnHover : true,
 };
 
 const SlideShow = () => {

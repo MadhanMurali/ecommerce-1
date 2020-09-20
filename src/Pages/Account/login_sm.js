@@ -78,7 +78,7 @@ export default class LoginSM extends Component {
         if (typeof input["password"] !== "undefined") {
             if (input["password"].length < 8) {
                 isValid = false;
-                errors["password"] = "Please add at least 8 charachter.";
+                errors["password"] = "Please enter the valid password";
             }
         }
 
@@ -98,12 +98,12 @@ export default class LoginSM extends Component {
                 
 
                 <div class="row">
-                    <div class="col s12  m5 l5 ">
-                        <div className="left">
+                    <div class="col s12">
+                        {/* <div className="left"> */}
                             
                             <h5 class="indigo-text">Please, login into your account</h5>
-
-                                <div class="z-depth-1 grey lighten-4 row formGroup">
+                            <div className="col l3"></div>
+                                <div class="z-depth-5 lighten-4 col s12 m12 l6  formGroup" >
 
                                     <form class="col s12" method="post" onSubmit={this.handleSubmit}>
 
@@ -112,7 +112,7 @@ export default class LoginSM extends Component {
                                                 <i class="material-icons prefix">mail_outline</i>
                                                 <input class='validate' type='email' name='email' id='email' class="form-control" value={this.state.input.email}
                                                     onChange={this.handleChange} /><div className="red-text">{this.state.errors.email}</div>
-                                                <label for='email'>Enter your email</label>
+                                                <label for='email'>Enter your email or phone</label>
                                             </div>
                                         </div>
 
@@ -140,7 +140,7 @@ export default class LoginSM extends Component {
                                         <br />
 
                                         <div class='row'>
-                                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Login</button>
+                                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light teal lighten-2'>Login</button>
                                         </div>
 
                                         <p class="indigo-text">Not yet registered!</p>
@@ -149,10 +149,10 @@ export default class LoginSM extends Component {
                                     </form>
                                 </div>
                             
-                        </div>
+                        {/* </div> */}
                     </div>
 
-                    <div class="col s12  m2 l2 ">
+                    {/* <div class="col s12  m2 l2 ">
                     <div class="section"></div>
                     <div class="section"></div>
                     <div class="section"></div>
@@ -160,9 +160,9 @@ export default class LoginSM extends Component {
                         <div class="row">
                         <h5>or</h5>
                     </div>
-                    </div>
+                    </div> */}
                    
-                    <div class="col s12  m5 l5 ">
+                    {/* <div class="col s12  m5 l5 ">
                     <div className="right">
                         <h5 class="indigo-text">Login with Social Media</h5>
 
@@ -188,7 +188,7 @@ export default class LoginSM extends Component {
                             </div>
                
                     </div>
-                </div>
+                </div> */}
             </div>
             </center>
             </div>

@@ -1,0 +1,39 @@
+div.card.shop-products {
+
+    height: 300px;
+    
+    margin-bottom: 30px;
+    
+    }
+    
+      
+    
+    img.shop-product-img {
+    
+        height: 250px;
+    
+    }
+    
+      
+    
+    div.card-action.teal.lighten-2.white-text {
+    
+    height: 15%;
+    
+    }
+    
+      
+    
+    a.btn-floating.halfway-fab.waves-effect.waves-light.teal.lighten-2 {
+    
+    position: absolute;
+    
+    right: 24px;
+    
+    bottom: -35px;
+    
+    }
+    .card .card-action{
+        padding: 2px 10px;
+    }
+   

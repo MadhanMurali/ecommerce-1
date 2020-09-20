@@ -1,0 +1,43 @@
+.cat-img{
+    height: 140px;
+    width: 140px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    border: 5px solid #f5f5f5;
+    padding: 0px;
+    margin: 0 auto;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.cat-description {
+    display: inline-block;
+    width: 100%;
+    padding-top: 15px;
+}
+.cat-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-block;
+    padding-top: 0;
+    letter-spacing: .6px;
+    line-height: 26px;
+}
+.cat-title a {
+    color: #000000;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.cat-item {
+    margin: 0 22px;
+    text-align: center;
+}
+

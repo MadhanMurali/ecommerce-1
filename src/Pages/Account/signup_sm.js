@@ -150,13 +150,13 @@ export default class SignupSM extends Component {
                 
 
                 <div class="row">
-                    <div class="col s12  m5 l5 ">
+                    <div class="col s12 ">
                         
                          
                             <h4 class="indigo-text">    Create new account   </h4>
                             <p>All fields are mandatory</p>
-                            
-                                <div class="z-depth-3 grey lighten-4 row formGroup" >
+                                <div className="col l3"></div>
+                                <div class="z-depth-5 lighten-4 col s12 m12 l6 formGroup" >
 
                                     <form class="col s12" method="post"  onSubmit={this.handleSubmit}>
                                         <div class="row">
@@ -182,7 +182,7 @@ export default class SignupSM extends Component {
                                                     <i class="material-icons prefix">phone</i>
                                                     <input id='telephone' name='telephone' type='tel' class='validate ' value={this.state.input.telephone}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.telephone}</div>
-                                                    <label for='telephone'>Telephone</label>
+                                                    <label for='telephone'>Mobile</label>
                                                 </div>
                                             </div>
                                        
@@ -191,7 +191,7 @@ export default class SignupSM extends Component {
                                                 <i class="material-icons prefix">email</i>
                                                 <input class='validate' type='email' name='email' id='email'  value={this.state.input.email}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.email}</div>
-                                                <label for='email'>Email id</label>
+                                                <label for='email'>Email</label>
                                             </div>
                                         </div>
 
@@ -216,7 +216,7 @@ export default class SignupSM extends Component {
                                         
 
                                         <div class="row">
-                                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect indigo'>Create Account</button>
+                                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
                                         </div>
 
                                         <p class="indigo-text">Already have an account?</p>
@@ -229,7 +229,7 @@ export default class SignupSM extends Component {
                     </div>
 
 
-                    <div class="col s12  m2 l2 ">
+                    {/* <div class="col s12  m2 l2 ">
                     <div class="section"></div>
                     <div class="section"></div>
                     <div class="section"></div>
@@ -237,10 +237,10 @@ export default class SignupSM extends Component {
                         <div class="row">
                         <h5>or</h5>
                     </div>
-                    </div>
+                    </div> */}
 
 
-                    <div class="col s12 m5 l5 ">
+                    {/* <div class="col s12 m5 l5 ">
                     
                         <div class="row">
                    
@@ -266,7 +266,7 @@ export default class SignupSM extends Component {
                             
                         <a href="#"><img class="responsive-img" src={lin}/></a>
                             </div>
-                    </div>
+                    </div> */}
                 
             </div>
             </center>

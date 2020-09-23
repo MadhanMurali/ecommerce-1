@@ -36,7 +36,7 @@ export default class SignupSM extends Component {
         event.preventDefault();
 
         if (this.validate()) {
-            console.log(this.state);
+            
 
             let input = {};
             input["first_name"] = "";
@@ -47,7 +47,7 @@ export default class SignupSM extends Component {
             input["confirm_password"] = "";
 
             this.setState({ input: input });
-
+            
             alert('Account created');
         }
     }

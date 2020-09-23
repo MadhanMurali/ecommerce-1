@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import ImageUploader from 'react-images-upload';
+
 import SearchBar from "material-ui-search-bar";
 import './Header.css'
 
@@ -16,6 +16,8 @@ import Categories from './Categories/Categories';
 
 import AnchorButton from '../../Utilities/Link/AnchorButton/AnchorButton';
 import CategoriesResponsive from './Categories/CategoriesResponsive/CategoriesResponsive';
+import Prescription from './prescription/prescription';
+
 
 const API = "http://localhost:3000/"
 
@@ -23,7 +25,8 @@ const Header = () => {
 
     const [categories, setCategories] = useState("");
     const [categoriesLoading, setCategoriesLoading] = useState(true);
-    const [pictures, setPictures] =  useState([]);
+    const [prescriptionLoading, setPrescriptionLoading] = useState(true);
+
     const [value, setValue] = useState("");
     useEffect( () => {
         fetch(API + "categories")
@@ -34,12 +37,7 @@ const Header = () => {
             });
     }, []);
 
-    const onDrop = (picture) =>  {
-        setPictures(pictures.concat(picture))
-        // this.setState({
-        //     pictures: this.state.pictures.concat(picture),
-        // });
-    }
+  
     const search_products = (search) => {
         console.log("searching products", search);
     }
@@ -80,21 +78,23 @@ const Header = () => {
                             onRequestSearch={() => search_products(value)}
                         />
 
-                            <ImageUploader
-                            withIcon={true}
-                            withLabel = {false}
-                            label= {"Max file size: 5 MB"}
-                            buttonText='Upload Prescription'
-                            onChange={onDrop}
-                            imgExtension={['.jpg', '.jpeg', '.png']}
-                            maxFileSize={5242880}
-                            withPreview = {true}
-                            singleImage={true}
 
-                        />
+
+
                         
                         </div>
-                        <div className="col s12 m12 l4"></div>
+                        <div className="col s12 m6 l4 prescription" style={{'text-align':'center'}}>
+
+                        <AnchorButton
+                    icon_name="cloud_upload" 
+                    title="Upload Prescription" 
+                    other_classes="waves-effect waves-light  text-white-3 modal-trigger"
+                    href="#prescription-modal"
+                    using_router={false}
+                />
+                    {/* <a class="waves-effect waves-light btn-medium"><i class="material-icons right">cloud_upload</i>Upload</a> */}
+        
+                        </div>
                     </div>
                 </div>
 
@@ -118,7 +118,7 @@ const Header = () => {
             { (categoriesLoading !== true) && 
                 <CategoriesResponsive categories={categories} />
             }
-            
+            <Prescription />
         </header>
     );
 }

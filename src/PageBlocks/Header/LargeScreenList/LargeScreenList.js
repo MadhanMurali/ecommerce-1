@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import './LargeScreenList.css';
 import AnchorButtonWithLi from '../../../Utilities/Link/AnchorButtonWithLi/AnchorButtonWithLi';
 import GoogleLogin from '../../GoogleAccount/LogIn/LogIn';
+import GoogleLogout from '../../GoogleAccount/LogOut/LogOut';
 
 const LargeScreenList = ({button_color_class}) => {
 
@@ -20,6 +21,9 @@ const LargeScreenList = ({button_color_class}) => {
                                                     href={"/profile/wishlist"} title="Wishlist" using_router={true}/>
                                 <AnchorButtonWithLi icon_name="shopping_cart" button_color_class={button_color_class} 
                                                     href={"/profile/cart"} title="Cart" using_router={true}/>
+                                <li>
+                                    <GoogleLogout button_color_class="white" other_classes="black-text" title='Sign Out'/>
+                                </li>
                                 <li>
                                     <Link to={"/profile/"} className={"btn-floating btn-large waves-effect waves-light " + button_color_class}>
                                         <img className="center-profile-image" src = {user.image_address} alt=""/>

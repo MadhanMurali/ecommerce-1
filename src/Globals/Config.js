@@ -3,6 +3,8 @@ import { createHttpLink } from "apollo-link-http";
 
 const GRAPHQL_URL = 'https://www.healthcarecrm.vimkes.com/graphql';
 
+const GOOGLE_CLIENT_ID = '499502244846-qh11f356nmvglbs38cna4lnu1gc4os47.apps.googleusercontent.com';
+
 const link = createHttpLink({
   uri: GRAPHQL_URL,
   credentials: 'include'
@@ -32,4 +34,5 @@ export {
   getRequestToken,
   getClientIp,
   GRAPHQL_URL,
+  GOOGLE_CLIENT_ID,
 }

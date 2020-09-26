@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import {ReactComponent as GoogleIcon} from '../../../assets/img/account/GoogleLogo.svg';
-import { getClientIp, getRequestToken, GRAPHQL_URL } from "../../../Globals/Config";
+import { getClientIp, getRequestToken, GRAPHQL_URL, GOOGLE_CLIENT_ID as googleClientId } from "../../../Globals/Config";
 import { useSelector, useDispatch } from 'react-redux';
 
 import { login } from '../../../Globals/ReduxStores/UserSlice';
@@ -19,8 +19,6 @@ const GoogleLogin = ({button_color_class, other_classes, title}) => {
             token,
         }
     }`;
-
-    const googleClientId = '499502244846-qh11f356nmvglbs38cna4lnu1gc4os47.apps.googleusercontent.com';
 
     const onSuccess = async (googleSignInResponse) => {
 
@@ -82,13 +80,13 @@ const GoogleLogin = ({button_color_class, other_classes, title}) => {
 
     return (
         <div>
-        <a 
-            onClick={signIn} 
-            className={"btn waves-effect waves-light google-anchor " + button_color_class + " " + other_classes} 
-            href={"#!"} 
-        >
-            <GoogleIcon /><span> {title}</span>
-        </a>
+            <a 
+                onClick={signIn}
+                className={"btn waves-effect waves-light google-anchor " + button_color_class + " " + other_classes} 
+                href={"#!"} 
+            >
+                <GoogleIcon /><span> {title}</span>
+            </a>
         </div>
     )
 }

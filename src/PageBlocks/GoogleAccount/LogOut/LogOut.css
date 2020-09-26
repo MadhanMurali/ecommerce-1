@@ -1,0 +1,10 @@
+.google-anchor > svg {
+    width: 30px !important;
+    position: relative;
+    top: 2px;
+}
+
+.google-anchor > span {
+    position: relative;
+    top: -7px;
+}

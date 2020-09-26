@@ -11,6 +11,7 @@ import AnchorWithLi from '../../../Utilities/Link/AnchorWithLi/AnchorWithLi';
 import AnchorButtonWithLi from '../../../Utilities/Link/AnchorButtonWithLi/AnchorButtonWithLi';
 
 import GoogleLogin from '../../GoogleAccount/LogIn/LogIn';
+import GoogleLogout from '../../GoogleAccount/LogOut/LogOut';
 
 const SmallScreenSideMenu = ({menu_button_color_class, link_color_class, options_button_color_class}) => {
 
@@ -39,6 +40,9 @@ const SmallScreenSideMenu = ({menu_button_color_class, link_color_class, options
                                 <AnchorWithLi using_router={true} href={"/profile/cart"} icon_name="shopping_cart" title="Cart" link_color_class={link_color_class}/>
                                 {/* <AnchorWithLi href={"#!"} using_router={false} icon_name="category" title="Categories" link_color_class={link_color_class}/> */}
                                 <AnchorWithLi using_router={true} href={"/contact-us"} icon_name="local_phone" title="Contacts" link_color_class={link_color_class}/>
+                                <li className="center-align">
+                                    <GoogleLogout button_color_class="white" other_classes="black-text" title='Sign Out'/>
+                                </li>
                             </>
 
     const loggedOutButtons = <>

@@ -43,8 +43,8 @@ function App() {
             </Route>
             <Route  path="/login" component={LoginSM}  />
             <Route  path="/signup" component={SignupSM}  />
-            <Route  path="/cart" component={Cart}  />
-            <Route  path="/wish-list" component={WishList}  />
+            {/* <Route  path="/cart" component={Cart}  /> */}
+            {/* <Route  path="/wish-list" component={WishList}  /> */}
             <Route  path="/checkout" component={CheckOut}  />           
             <Route exact path="/contact-us">
               <ContactUs />

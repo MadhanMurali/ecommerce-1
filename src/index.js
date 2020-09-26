@@ -4,12 +4,22 @@ import * as serviceWorker from './serviceWorker';
 
 import { BrowserRouter as Router } from 'react-router-dom';
 
+import { ApolloProvider } from '@apollo/client';
+import { client } from './Globals/Config';
+
+import Store from './Globals/ReduxStores/Store';
+import { Provider } from 'react-redux';
+ 
 import App from './App';
 
 ReactDOM.render(
-    <Router>
-      <App />
-    </Router>,
+  <ApolloProvider client={client}>
+    <Provider store={Store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </ApolloProvider>,
 document.getElementById('root')
 );
 

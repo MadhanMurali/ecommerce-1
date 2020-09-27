@@ -49,8 +49,8 @@ const Prescription = () => {
                         /> 
         
        {/* <SubmitButton pictures = {pictures}/> */}
-       <div className="col s12 m6 l4" style={{'text-align':'center', 'display': pictures.length > 0 ? "block " : "none"}} >
-        <a class="waves-effect waves-light btn">Submit</a>
+       <div className="col s12 m6 l4" style={{'textAlign':'center', 'display': pictures.length > 0 ? "block " : "none"}} >
+        <a className="waves-effect waves-light btn">Submit</a>
         </div>
         </div>
         <div className="modal-footer">

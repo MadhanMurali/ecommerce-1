@@ -8,6 +8,7 @@ export const userSlice = createSlice({
         last_name: null,
         email_id: null,
         image_address: null,
+        mobile_no: null,
         authorization_token: null,
         logged_in: false,
     },
@@ -27,6 +28,7 @@ export const userSlice = createSlice({
                 last_name: null,
                 email_id: null,
                 image_address: null,
+                mobile_no: null,
                 authorization_token: null,
                 logged_in: false,
             }

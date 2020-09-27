@@ -3,12 +3,11 @@ import {ReactComponent as GoogleIcon} from '../../../assets/img/account/GoogleLo
 import { useGoogleLogout } from 'react-google-login';
 
 import { GOOGLE_CLIENT_ID as googleClientId } from '../../../Globals/Config';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../../../Globals/ReduxStores/UserSlice';
 
 const GoogleLogout = ({button_color_class, other_classes, title}) => {
 
-    const user = useSelector( state => state.user );
     const dispatch = useDispatch();
 
     const onSuccess = () => {

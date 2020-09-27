@@ -147,135 +147,125 @@ export default class SignupSM extends Component {
         return (
             <div class="container">
                 <center>
-                
-
                 <div class="row">
                     <div class="col s12 ">
-                        
-                         
-                            <h4 class="indigo-text">    Create new account   </h4>
-                            <p>All fields are mandatory</p>
-                                <div className="col l3"></div>
-                                <div class="z-depth-5 lighten-4 col s12 m12 l6 formGroup" >
-
-                                    <form class="col s12" method="post"  onSubmit={this.handleSubmit}>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                
-                                                <i class="material-icons prefix iconColor">account_circle</i>
-                                                <input id='first_name' type='text' name='first_name' class='validate'  value={this.state.input.first_name}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.first_name}</div>
-                                                <label for="first_name">First Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">account_circle</i>
-                                                <input id='last_name' type='text' name='last_name' class='validate ' value={this.state.input.last_name}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.last_name}</div>
-                                                <label for='last_name'>Last Name</label>
-                                            </div>
-                                        </div>
-
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <i class="material-icons prefix">phone</i>
-                                                    <input id='telephone' name='telephone' type='tel' class='validate ' value={this.state.input.telephone}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.telephone}</div>
-                                                    <label for='telephone'>Mobile</label>
-                                                </div>
-                                            </div>
-                                       
-                                        <div class="row">
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">email</i>
-                                                <input class='validate' type='email' name='email' id='email'  value={this.state.input.email}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.email}</div>
-                                                <label for='email'>Email</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">lock</i>
-                                                <input class='validate' type='password' name='password' id='password'  value={this.state.input.password}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.password}</div>
-                                                <label for='password'>Password</label>
-                                            </div>
-                                        </div>
-
-                                            <div class="row">
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">lock</i>
-                                                <input class='validate' type='password' name='confirm_password' id='confirm_password'  value={this.state.input.confirm_password}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.confirm_password}</div>
-                                                <label for='confirm_password'>Confirm Password</label>
-                                            </div>
-                                            </div>
-                                        
-                                        
-
-                                        <div class="row">
-                                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
-                                        </div>
-
-                                        <p class="indigo-text">Already have an account?</p>
-                                        <h6><Link to="/login">Login</Link></h6>
-
-                                    </form>
+                        <h4 class="indigo-text">    Create new account   </h4>
+                        <p>All fields are mandatory</p>
+                        <div className="col l3"></div>
+                        <div class="z-depth-5 lighten-4 col s12 m12 l6 formGroup" >
+                            <form class="col s12" method="post"  onSubmit={this.handleSubmit}>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix iconColor">account_circle</i>
+                                        <input id='first_name' type='text' name='first_name' class='validate'  value={this.state.input.first_name}
+                                            onChange={this.handleChange} />
+                                        <div className='red-text'>{this.state.errors.first_name}</div>
+                                        <label for="first_name">First Name</label>
+                                    </div>
                                 </div>
-                            
-                        
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input id='last_name' type='text' name='last_name' class='validate ' value={this.state.input.last_name}
+                                            onChange={this.handleChange} />
+                                        <div className='red-text'>{this.state.errors.last_name}</div>
+                                        <label for='last_name'>Last Name</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">phone</i>
+                                        <input id='telephone' name='telephone' type='tel' class='validate ' value={this.state.input.telephone}
+                                            onChange={this.handleChange} />
+                                        <div className='red-text'>{this.state.errors.telephone}</div>
+                                        <label for='telephone'>Mobile</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class='input-field col s12'>
+                                        <i class="material-icons prefix">email</i>
+                                        <input class='validate' type='email' name='email' id='email'  value={this.state.input.email}
+                                            onChange={this.handleChange} />
+                                        <div className='red-text'>{this.state.errors.email}</div>
+                                        <label for='email'>Email</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class='input-field col s12'>
+                                        <i class="material-icons prefix">lock</i>
+                                        <input class='validate' type='password' name='password' id='password'  value={this.state.input.password}
+                                            onChange={this.handleChange} />
+                                        <div className='red-text'>{this.state.errors.password}</div>
+                                        <label for='password'>Password</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class='input-field col s12'>
+                                        <i class="material-icons prefix">lock</i>
+                                        <input class='validate' type='password' name='confirm_password' id='confirm_password'  value={this.state.input.confirm_password}
+                                            onChange={this.handleChange} />
+                                        <div className='red-text'>{this.state.errors.confirm_password}</div>
+                                        <label for='confirm_password'>Confirm Password</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
+                                </div>
+
+                                <p class="indigo-text">Already have an account?</p>
+                                <h6><Link to="/login">Login</Link></h6>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                {/* <div class="col s12  m2 l2 ">
+                <div class="section"></div>
+                <div class="section"></div>
+                <div class="section"></div>
+                <div class="section"></div>
+                    <div class="row">
+                    <h5>or</h5>
+                </div>
+                </div> */}
+
+
+                {/* <div class="col s12 m5 l5 ">
+                
+                    <div class="row">
+            
+                    <h4 class="indigo-text">Signup with Social Media</h4>
+                    </div><div class="section"></div>
+                    <div class="section"></div>
+                    <div class="row">
+                    <a href="#"><img class="responsive-img" src={google}/></a>
                     </div>
 
-
-                    {/* <div class="col s12  m2 l2 ">
                     <div class="section"></div>
-                    <div class="section"></div>
-                    <div class="section"></div>
-                    <div class="section"></div>
-                        <div class="row">
-                        <h5>or</h5>
-                    </div>
-                    </div> */}
-
-
-                    {/* <div class="col s12 m5 l5 ">
-                    
-                        <div class="row">
-                   
-                        <h4 class="indigo-text">Signup with Social Media</h4>
-                        </div><div class="section"></div>
-                        <div class="section"></div>
-                        <div class="row">
-                        <a href="#"><img class="responsive-img" src={google}/></a>
+                    <div class="row">   
+                    <a href="#"><img class="responsive-img" src={fb}/></a>
                         </div>
 
                         <div class="section"></div>
-                        <div class="row">   
-                        <a href="#"><img class="responsive-img" src={fb}/></a>
-                            </div>
-
-                            <div class="section"></div>
-                        <div class="row">        
-                            
-                        <a href="#"><img class="responsive-img" src={twitter}/></a>
-                            </div>
-                            <div class="section"></div>
-                        <div class="row">        
-                            
-                        <a href="#"><img class="responsive-img" src={lin}/></a>
-                            </div>
-                    </div> */}
-                
+                    <div class="row">        
+                        
+                    <a href="#"><img class="responsive-img" src={twitter}/></a>
+                        </div>
+                        <div class="section"></div>
+                    <div class="row">        
+                        
+                    <a href="#"><img class="responsive-img" src={lin}/></a>
+                        </div>
+                </div> */}
+                </center>
             </div>
-            </center>
-            </div>
-              )
-
+        );
     }
-
-
-
 }
 

@@ -76,8 +76,6 @@ const GoogleLogin = ({button_color_class, other_classes, title}) => {
         cookiePolicy: 'none'
     });
 
-    console.log(user);
-
     return (
         <div>
             <a 

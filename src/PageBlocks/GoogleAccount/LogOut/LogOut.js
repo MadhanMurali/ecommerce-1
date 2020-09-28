@@ -26,13 +26,13 @@ const GoogleLogout = ({button_color_class, other_classes, title}) => {
 
     return (
         <div>
-            <a 
+            <button 
                 onClick={ signOut } 
                 className={"btn waves-effect waves-light google-anchor " + button_color_class + " " + other_classes} 
                 href={"#!"} 
             >
                 <GoogleIcon /><span> {title}</span>
-            </a>
+            </button>
         </div>
     )
 }

@@ -11,9 +11,11 @@ import { getClientIp, getRequestToken, GRAPHQL_URL } from "../../Globals/Config"
 import { connect } from 'react-redux';
 import { login } from '../../Globals/ReduxStores/UserSlice';
 
-import "./signup.css";
+import "./signup_sm.css";
 
 import "materialize-css/dist/css/materialize.min.css";
+import GoogleLogin from "../../PageBlocks/GoogleAccount/LogIn/LogIn";
+import { SIGNIN } from "../../Globals/PathConstants";
 
 const SIGN_IN_MUTATION = `mutation SignUpAction($first_name: String, $last_name: String, $email_id: String, $client_ip: String, $request_token: String, $mobile_no1: String) {
     SignUpAction(first_name: $first_name, last_name: $last_name, email_id: $email_id, client_ip: $client_ip, request_token: $request_token, mobile_no1: $mobile_no1) {
@@ -207,11 +209,11 @@ class SignupSM extends Component {
                 <center>
                 <div className="row">
                     <div className="col s12 ">
-                        <h4 className="indigo-text">    Create new account   </h4>
-                        <p>All fields are mandatory</p>
                         <div className="col l3"></div>
-                        <div className="z-depth-5 lighten-4 col s12 m12 l6 formGroup" >
-                            <form className="col s12" method="post"  onSubmit={this.handleSubmit}>
+                        <div className="z-depth-1 lighten-4 col s12 m12 l6 formGroup" >
+                            <h4 className="indigo-text">Create new account</h4>
+                            <p className="red-text">All fields are mandatory</p>
+                            <form className="col s12 signup-form" method="post"  onSubmit={this.handleSubmit}>
                                 <div className="row">
                                     <div className="input-field col s12">
                                         <i className="material-icons prefix iconColor">account_circle</i>
@@ -276,8 +278,8 @@ class SignupSM extends Component {
                                     <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
                                 </div>
 
-                                <p className="indigo-text">Already have an account?</p>
-                                <h6><Link to="/login">Login</Link></h6>
+                                <p className="indigo-text">Already have an account? <Link to={SIGNIN}>Sign In</Link></p>
+                                <GoogleLogin button_color_class="white" other_classes="black-text" title='Sign In With Google'/>
                             </form>
                         </div>
                     </div>

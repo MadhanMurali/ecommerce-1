@@ -17,6 +17,7 @@ import Categories from './Categories/Categories';
 import AnchorButton from '../../Utilities/Link/AnchorButton/AnchorButton';
 import CategoriesResponsive from './Categories/CategoriesResponsive/CategoriesResponsive';
 import Prescription from './prescription/prescription';
+import { HOME } from '../../Globals/PathConstants';
 
 
 const API = "http://localhost:3000/"
@@ -47,13 +48,18 @@ const Header = () => {
             <nav className="nav-extended teal lighten-2">
                 <div className="nav-wrapper">
 
-                    <Link to="/" className="brand-logo header-logo left">
+                    <Link to={HOME} className="brand-logo header-logo left">
                         <img src={Logo} alt="Logo" className="header-logo-img"></img>
                     </Link>
 
                     <LargeScreenList button_color_class="teal darken-3"/>
 
-                    <SmallScreenSideMenu menu_button_color_class="teal darken-3" link_color_class="black-text"/>
+                    <SmallScreenSideMenu 
+                        menu_button_color_class="teal darken-3" 
+                        title_color_class="white-text" 
+                        icon_color_class="white-text"
+                        options_button_color_class="teal darken-3"
+                    />
 
                     {/* <SmallScreenModal menu_button_color_class="teal darken-3" link_color_class="black-text"/> */}
 

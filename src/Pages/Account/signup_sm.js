@@ -7,7 +7,7 @@ import lin from '../../assets/img/account/linkedin.png';
 
 import {  Link } from "react-router-dom";
 
-import { getClientIp, getRequestToken, GRAPHQL_URL } from "../../Globals/Config";
+import { getClientIp, getRequestToken, GRAPHQL_URL, LOCAL_STORAGE_NAMES, SIGN_IN_METHOD } from "../../Globals/Config";
 import { connect } from 'react-redux';
 import { login } from '../../Globals/ReduxStores/UserSlice';
 
@@ -85,6 +85,8 @@ class SignupSM extends Component {
                 console.log(response);
                 if (response.data.SignUpAction['message'] === "SUCCESS") {
                     let token = response.data.SignUpAction['token'];
+                    localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD, SIGN_IN_METHOD.NATIVE);
+                    localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN, true);
                     this.props.login ({
                         ...signInMutationVariablesNoPassword(signInMutationVariables),
                         authorization_token: token,

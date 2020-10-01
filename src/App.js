@@ -11,12 +11,24 @@ import "progress-tracker/src/styles/progress-tracker.scss";
 //JS imports
 import SuperSimpleLoadingScreen from './Utilities/LoadingScreen/SuperSimpleLoadingScreen/SuperSimpleLoadingScreen';
 import Routes from './Pages/Routes';
+import GoogleAccountInit from './PageBlocks/GoogleAccount/GoogleAccountInit';
+import { LOCAL_STORAGE_NAMES } from './Globals/Config';
 const Header = lazy( () => import('./PageBlocks/Header/Header') );
 const Footer = lazy( () => import('./PageBlocks/Footer/Footer') );
 
-function App() {
+const App = React.memo(function App() {
 
   const user = useSelector( state => state.user );
+
+  useEffect( () => {
+    const previously_signed_in = localStorage.getItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN);
+    const previous_sign_in_method = localStorage.getItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD);
+
+    if (previously_signed_in) {
+      alert(previously_signed_in);
+      alert(previous_sign_in_method);
+    }
+  }, [])
 
   return (
     <div className="App">
@@ -27,6 +39,6 @@ function App() {
         </Suspense>
     </div>
   );
-}
+})
 
 export default App;

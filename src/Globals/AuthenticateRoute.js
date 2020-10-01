@@ -12,7 +12,7 @@ const AuthenticateRoute = (props) => {
         switch (props.requirement) {
             case SIGNED_IN:
                 return setRoute (
-                       (props.user.logged_in)
+                       (props.user.signed_in)
                             ? <Route {...props} />
                             : <Redirect to={SIGNIN} />
                        );

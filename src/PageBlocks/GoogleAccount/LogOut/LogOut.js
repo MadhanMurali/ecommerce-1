@@ -2,7 +2,7 @@ import React from 'react'
 import {ReactComponent as GoogleIcon} from '../../../assets/img/account/GoogleLogo.svg';
 import { useGoogleLogout } from 'react-google-login';
 
-import { GOOGLE_CLIENT_ID as googleClientId } from '../../../Globals/Config';
+import { GOOGLE_CLIENT_ID as googleClientId, LOCAL_STORAGE_NAMES } from '../../../Globals/Config';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../Globals/ReduxStores/UserSlice';
 
@@ -11,6 +11,9 @@ const GoogleLogout = ({button_color_class, other_classes, title}) => {
     const dispatch = useDispatch();
 
     const onSuccess = () => {
+        localStorage.removeItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD);
+        localStorage.removeItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN);
+        
         dispatch( logout() );
     }
 

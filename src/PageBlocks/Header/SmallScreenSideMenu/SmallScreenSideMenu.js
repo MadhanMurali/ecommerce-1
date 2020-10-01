@@ -89,7 +89,7 @@ const SmallScreenSideMenu = ({menu_button_color_class, title_color_class, option
                 </div>
             </li> */}
             {
-                (!user.logged_in)
+                (!user.signed_in)
                     ?   loggedOutButtons
                     :   loggedInButtons
             }

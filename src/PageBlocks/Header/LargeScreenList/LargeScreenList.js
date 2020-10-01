@@ -9,6 +9,7 @@ import GoogleLogout from '../../GoogleAccount/LogOut/LogOut';
 import NormalAccountLogout from '../../NormalAccountRedirect/Logout/Logout';
 
 import { CONTACT_US, PROFILE, SIGNIN, SIGNUP } from '../../../Globals/PathConstants';
+import { SIGN_IN_METHOD } from '../../../Globals/Config';
 
 const LargeScreenList = ({button_color_class}) => {
 
@@ -18,7 +19,7 @@ const LargeScreenList = ({button_color_class}) => {
                             ? <i class="material-icons">account_circle</i>
                             : <img className="center-profile-image" src = {user.image_address} alt=""/>;
 
-    const signOutButton = (user.social_id_type === "google")
+    const signOutButton = (user.social_id_type === SIGN_IN_METHOD.GOOGLE)
                             ? <GoogleLogout button_color_class="white" other_classes="black-text" title='Sign Out'/>
                             : <NormalAccountLogout 
                                 button_color_class="teal darken-3" icon_name="exit_to_app" title="Sign Out"/>;
@@ -53,7 +54,7 @@ const LargeScreenList = ({button_color_class}) => {
         <ul id="nav-mobile" className="right">
             <div className="hide-on-med-and-down">
                 {
-                    (!user.logged_in)
+                    (!user.signed_in)
                         ?   loggedOutButtons
                         :   loggedInButtons
                 }

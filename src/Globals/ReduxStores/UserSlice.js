@@ -10,14 +10,16 @@ export const userSlice = createSlice({
         image_address: null,
         mobile_no: null,
         authorization_token: null,
-        logged_in: false,
+        signed_in: false,
+        previous_sign_in_method: null,
+        previously_signed_in: false,
     },
     reducers: {
         login: (state, action) => {
             return {
                 ...state,
                 ...action.payload,
-                logged_in : true,
+                signed_in : true,
             }
         },
         logout: (state) => {
@@ -30,7 +32,9 @@ export const userSlice = createSlice({
                 image_address: null,
                 mobile_no: null,
                 authorization_token: null,
-                logged_in: false,
+                signed_in: false,
+                previous_sign_in_method: null,
+                previously_signed_in: false,
             }
         }
     }

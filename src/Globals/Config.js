@@ -4,6 +4,14 @@ import { createHttpLink } from "apollo-link-http";
 //constants
 const GRAPHQL_URL = 'https://www.healthcarecrm.vimkes.com/graphql';
 const GOOGLE_CLIENT_ID = '499502244846-qh11f356nmvglbs38cna4lnu1gc4os47.apps.googleusercontent.com';
+const LOCAL_STORAGE_NAMES = {
+  PREVIOUS_SIGN_IN_METHOD: "previous_sign_in_method",
+  PREVIOUSLY_SIGNED_IN: "previously_signed_in",
+}
+const SIGN_IN_METHOD = {
+  GOOGLE: "google",
+  NATIVE: "native"
+}
 
 const link = createHttpLink({
   uri: GRAPHQL_URL,
@@ -34,5 +42,7 @@ export {
   getRequestToken,
   getClientIp,
   GRAPHQL_URL,
-  GOOGLE_CLIENT_ID
+  GOOGLE_CLIENT_ID,
+  LOCAL_STORAGE_NAMES,
+  SIGN_IN_METHOD
 }

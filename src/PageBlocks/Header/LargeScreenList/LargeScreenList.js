@@ -20,7 +20,8 @@ const LargeScreenList = ({button_color_class}) => {
                             : <img className="center-profile-image" src = {user.image_address} alt=""/>;
 
     const signOutButton = (user.social_id_type === SIGN_IN_METHOD.GOOGLE)
-                            ? <GoogleLogout button_color_class="white" other_classes="black-text" title='Sign Out'/>
+                            ? <GoogleLogout 
+                                button_color_class="teal darken-3" icon_name="exit_to_app" title='Sign Out'/>
                             : <NormalAccountLogout 
                                 button_color_class="teal darken-3" icon_name="exit_to_app" title="Sign Out"/>;
 

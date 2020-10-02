@@ -15,13 +15,13 @@
 
 .formGroup
 { 
-  display: inline-block; 
-  padding: 32px 48px 0px 48px;
+  /* display: inline-block; 
+  padding: 32px 48px 0px 48px; */
   border: 1px solid #EEE;
   border-radius: 3px;
 }
 
-.signin-form {
+.signin-form-container {
   margin-top: 20px;
   margin-bottom: 35px;
 }

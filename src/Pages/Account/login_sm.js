@@ -107,42 +107,45 @@ class LoginSM extends Component {
                             {/* <div className="left"> */} 
                             <div className="col l3"></div>
                             <div className="z-depth-1 lighten-4 col s12 m12 l6 formGroup" >
-                                <form className="col s12 signin-form" method="post" onSubmit={this.handleSubmit}>
-                                    <h5 className="indigo-text">Login</h5>
-                                    <div className='input-field col s12'>
-                                        <i className="material-icons prefix">mail_outline</i>
-                                        <input className='validate' type='email' name='email' id='email' className="form-control" value={this.state.input.email}
-                                            onChange={this.handleChange} />
-                                        <div className="red-text">{this.state.errors.email}</div>
-                                        <label htmlFor='email'>Enter your email or phone</label>
-                                    </div>
+                                <div className="signin-form-container">
+                                    <form className="col s12 signin-form" method="post" onSubmit={this.handleSubmit}>
+                                        <h5 className="indigo-text">Login</h5>
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">mail_outline</i>
+                                            <input className='validate' type='email' name='email' id='email' className="form-control" value={this.state.input.email}
+                                                onChange={this.handleChange} />
+                                            <div className="red-text">{this.state.errors.email}</div>
+                                            <label htmlFor='email'>Enter your email or phone</label>
+                                        </div>
 
-                                    <div className='input-field col s12'>
-                                        <i className="material-icons prefix">lock_outline</i>
-                                        <input className='validate' type='password' name='password' id='password' className="form-control" value={this.state.input.password}
-                                            onChange={this.handleChange} />
-                                        <div className="red-text">{this.state.errors.password}</div>
-                                        <label htmlFor='password'>Enter your password</label>
-                                    </div>
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">lock_outline</i>
+                                            <input className='validate' type='password' name='password' id='password' className="form-control" value={this.state.input.password}
+                                                onChange={this.handleChange} />
+                                            <div className="red-text">{this.state.errors.password}</div>
+                                            <label htmlFor='password'>Enter your password</label>
+                                        </div>
 
-                                    <p className="left-align signin-remember-me">
-                                        <label>
-                                            <input type="checkbox"/>
-                                            <span>Remember me</span>
-                                        </label>
-                                    </p>
+                                        <p className="left-align signin-remember-me">
+                                            <label>
+                                                <input type="checkbox"/>
+                                                <span>Remember me</span>
+                                            </label>
+                                        </p>
 
-                                    <p>
-                                        <a className='pink-text' href='#!'><b>Forgot Password?</b></a>
-                                    </p>
+                                        <p>
+                                            <a className='pink-text' href='#!'><b>Forgot Password?</b></a>
+                                        </p>
 
-                                    <div className='row'>
-                                        <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-light teal lighten-2'>Login</button>
-                                    </div>
+                                        <div className='row'>
+                                            <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-light teal lighten-2'>Login</button>
+                                        </div>
 
-                                    <p className="indigo-text">Not registered yet?<br/><Link to={SIGNUP}>Create new Account</Link></p>
+                                        <p className="indigo-text">Not registered yet?<br/><Link to={SIGNUP}>Create new Account</Link></p>
+                                    </form>
                                     <GoogleLogin button_color_class="white" other_classes="black-text" title='Sign In With Google'/>
-                                </form>
+                                </div>
+                                
                             </div>
                             {/* </div> */}
                         </div>

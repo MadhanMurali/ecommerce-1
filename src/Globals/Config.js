@@ -1,5 +1,8 @@
+//This file contains some some cofigurations and frequently used global constants
+
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { createHttpLink } from "apollo-link-http";
+import { createContext } from 'react';
 
 //constants
 const GRAPHQL_URL = 'https://www.healthcarecrm.vimkes.com/graphql';
@@ -37,6 +40,8 @@ const getClientIp = async () => {
   return data["ip"];
 }
 
+const GAuth2Context = createContext(undefined);
+
 export {
   client,
   getRequestToken,
@@ -44,5 +49,6 @@ export {
   GRAPHQL_URL,
   GOOGLE_CLIENT_ID,
   LOCAL_STORAGE_NAMES,
-  SIGN_IN_METHOD
+  SIGN_IN_METHOD,
+  GAuth2Context
 }

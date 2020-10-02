@@ -4,7 +4,6 @@
 }
 
 .super-simple-loading-screen {
-  height: 95vh;
   width: 100%;
 }
 
@@ -16,9 +15,14 @@
     font-family: "Open Sans Condensed Light";
     position: relative;
     top: -1rem; */
-    position: fixed;
+    position: absolute;
     /* top: 50%; */
-    left: 47%;
+    /* left: 50%; */
+    margin: auto;
+    top: 50vh;
+    bottom: 50vh;
+    left: 0;
+    right: 0;
     /* transform: translate(-50%, -50%);
     transform: -webkit-translate(-50%, -50%);
     transform: -moz-translate(-50%, -50%);

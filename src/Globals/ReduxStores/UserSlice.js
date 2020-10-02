@@ -15,6 +15,12 @@ export const userSlice = createSlice({
         previously_signed_in: false,
     },
     reducers: {
+        updatePreviousState: (state, action) => {
+            return {
+                ...state,
+                ...action.payload,
+            }
+        },
         login: (state, action) => {
             return {
                 ...state,
@@ -40,6 +46,6 @@ export const userSlice = createSlice({
     }
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, updatePreviousState } = userSlice.actions;
 
 export default userSlice.reducer;

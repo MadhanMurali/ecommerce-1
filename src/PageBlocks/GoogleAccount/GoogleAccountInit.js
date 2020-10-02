@@ -2,7 +2,7 @@ import {
     getClientIp, getRequestToken, GRAPHQL_URL, GOOGLE_CLIENT_ID as googleClientId,
     LOCAL_STORAGE_NAMES, SIGN_IN_METHOD
 } from "../../Globals/Config";
-
+import { update } from "../../Globals/ReduxStores/AppSlice";
 import { login } from '../../Globals/ReduxStores/UserSlice';
 
 const GoogleAccountInit = (dispatchCallback, auth2) => {
@@ -20,6 +20,9 @@ const GoogleAccountInit = (dispatchCallback, auth2) => {
     const signInCallBack = async (signedIn) => {
         console.log('signInCallback', signedIn);
         if (signedIn) {
+            dispatch (update ({
+                signing_in: true,
+            }));
             const currentUser = auth2.currentUser.get();
             const profile = currentUser.getBasicProfile();
 
@@ -52,22 +55,32 @@ const GoogleAccountInit = (dispatchCallback, auth2) => {
                     let token = response.data.LoginWithSocialID['token'];
                     localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD, SIGN_IN_METHOD.GOOGLE);
                     localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN, true);
+
+                    //used to reuse signInMutationVariables with redux store
+                    const userState = ({ client_ip, request_token, social_id, ...rest }) => rest;
+
                     dispatch (login ({
-                        ...signInMutationVariables,
+                        ...userState(signInMutationVariables),
                         authorization_token: token,
-                    }))
+                    }));
                 }
                 else {
                     alert("Login With Social ID error " + response.data.LoginWithSocialID['message']);
                 }
             })
-            .catch( err => console.log(err));
+            .catch( err => console.log("Google Sign In Callback Error: ", err))
+            .finally(() => {
+                dispatch (update ({
+                    signing_in: false,
+                }));
+            });
             console.log(signInMutationVariables);
         }
     }
 
     if (signedIn) {
         signInCallBack(signedIn);
+        auth2.isSignedIn.listen(signInCallBack);
     }
     else {
         auth2.isSignedIn.listen(signInCallBack);

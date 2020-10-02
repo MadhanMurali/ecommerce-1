@@ -5,14 +5,16 @@ import { GAuth2Context, LOCAL_STORAGE_NAMES } from '../../../Globals/Config';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../../Globals/ReduxStores/UserSlice';
 import AnchorButton from '../../../Utilities/Link/AnchorButton/AnchorButton';
+import { reset } from '../../../Globals/ReduxStores/AppSlice';
+import { useHistory } from 'react-router-dom';
+import { HOME } from '../../../Globals/PathConstants';
 
 const GoogleLogout = ({button_color_class, other_classes, title, icon_name, icon_color_class}) => {
 
     const dispatch = useDispatch();
-
     const auth2 = useContext(GAuth2Context);
-
     const [googleAuth2, setGoogleAuth2] = useState(0);
+    const history = useHistory();
 
     useEffect ( () => {
         if (!auth2)
@@ -30,6 +32,8 @@ const GoogleLogout = ({button_color_class, other_classes, title, icon_name, icon
                         localStorage.removeItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD);
                         localStorage.removeItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN);
                         dispatch( logout() );
+                        dispatch( reset() );
+                        history.push(HOME);
                     }
                 )
                 .catch( err => console.log("Google Sign Out Error", err));

@@ -8,7 +8,7 @@ const SuperSimpleLoadingScreen = () => {
       //     <h4 className="super-simple-loading">Loading...</h4>
       // </div>
       <div className="super-simple-loading-screen valign-wrapper">
-        <div className="preloader-wrapper small active super-simple-loading">
+        <div className="preloader-wrapper big active super-simple-loading">
           <div className="spinner-layer spinner-green-only">
             <div className="circle-clipper left">
               <div className="circle"></div>

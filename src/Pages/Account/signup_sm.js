@@ -67,7 +67,7 @@ class SignupSM extends Component {
             }
 
             //used to reuse signInMutationVariables with redux store
-            const signInMutationVariablesNoPassword = ({ password, ...rest }) => rest;
+            const userState = ({ client_ip, request_token, social_id, password, ...rest }) => rest;
     
             fetch(GRAPHQL_URL, {
                 method: 'POST',
@@ -88,7 +88,7 @@ class SignupSM extends Component {
                     localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD, SIGN_IN_METHOD.NATIVE);
                     localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN, true);
                     this.props.login ({
-                        ...signInMutationVariablesNoPassword(signInMutationVariables),
+                        ...userState(signInMutationVariables),
                         authorization_token: token,
                     });
                     alert('Account created');
@@ -215,74 +215,76 @@ class SignupSM extends Component {
                         <div className="z-depth-1 lighten-4 col s12 m12 l6 formGroup" >
                             <h4 className="indigo-text">Create new account</h4>
                             <p className="red-text">All fields are mandatory</p>
-                            <form className="col s12 signup-form" method="post"  onSubmit={this.handleSubmit}>
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <i className="material-icons prefix iconColor">account_circle</i>
-                                        <input id='first_name' type='text' name='first_name' className='validate'  value={this.state.input.first_name}
-                                            onChange={this.handleChange} />
-                                        <div className='red-text'>{this.state.errors.first_name}</div>
-                                        <label htmlFor="first_name">First Name</label>
+                            <div className="signup-form-container">
+                                <form className="col s12 signup-form" method="post"  onSubmit={this.handleSubmit}>
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <i className="material-icons prefix iconColor">account_circle</i>
+                                            <input id='first_name' type='text' name='first_name' className='validate'  value={this.state.input.first_name}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.first_name}</div>
+                                            <label htmlFor="first_name">First Name</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <i className="material-icons prefix">account_circle</i>
-                                        <input id='last_name' type='text' name='last_name' className='validate ' value={this.state.input.last_name}
-                                            onChange={this.handleChange} />
-                                        <div className='red-text'>{this.state.errors.last_name}</div>
-                                        <label htmlFor='last_name'>Last Name</label>
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <i className="material-icons prefix">account_circle</i>
+                                            <input id='last_name' type='text' name='last_name' className='validate ' value={this.state.input.last_name}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.last_name}</div>
+                                            <label htmlFor='last_name'>Last Name</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="row">
-                                    <div className="input-field col s12">
-                                        <i className="material-icons prefix">phone</i>
-                                        <input id='telephone' name='telephone' type='tel' className='validate ' value={this.state.input.telephone}
-                                            onChange={this.handleChange} />
-                                        <div className='red-text'>{this.state.errors.telephone}</div>
-                                        <label htmlFor='telephone'>Mobile</label>
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <i className="material-icons prefix">phone</i>
+                                            <input id='telephone' name='telephone' type='tel' className='validate ' value={this.state.input.telephone}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.telephone}</div>
+                                            <label htmlFor='telephone'>Mobile</label>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div className="row">
-                                    <div className='input-field col s12'>
-                                        <i className="material-icons prefix">email</i>
-                                        <input className='validate' type='email' name='email' id='email'  value={this.state.input.email}
-                                            onChange={this.handleChange} />
-                                        <div className='red-text'>{this.state.errors.email}</div>
-                                        <label htmlFor='email'>Email</label>
+                                    
+                                    <div className="row">
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">email</i>
+                                            <input className='validate' type='email' name='email' id='email'  value={this.state.input.email}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.email}</div>
+                                            <label htmlFor='email'>Email</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="row">
-                                    <div className='input-field col s12'>
-                                        <i className="material-icons prefix">lock</i>
-                                        <input className='validate' type='password' name='password' id='password'  value={this.state.input.password}
-                                            onChange={this.handleChange} />
-                                        <div className='red-text'>{this.state.errors.password}</div>
-                                        <label htmlFor='password'>Password</label>
+                                    <div className="row">
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">lock</i>
+                                            <input className='validate' type='password' name='password' id='password'  value={this.state.input.password}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.password}</div>
+                                            <label htmlFor='password'>Password</label>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="row">
-                                    <div className='input-field col s12'>
-                                        <i className="material-icons prefix">lock</i>
-                                        <input className='validate' type='password' name='confirm_password' id='confirm_password'  value={this.state.input.confirm_password}
-                                            onChange={this.handleChange} />
-                                        <div className='red-text'>{this.state.errors.confirm_password}</div>
-                                        <label htmlFor='confirm_password'>Confirm Password</label>
+                                    <div className="row">
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">lock</i>
+                                            <input className='validate' type='password' name='confirm_password' id='confirm_password'  value={this.state.input.confirm_password}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.confirm_password}</div>
+                                            <label htmlFor='confirm_password'>Confirm Password</label>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div className="row">
-                                    <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
-                                </div>
+                                    
+                                    <div className="row">
+                                        <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
+                                    </div>
 
-                                <p className="indigo-text">Already have an account? <Link to={SIGNIN}>Sign In</Link></p>
+                                    <p className="indigo-text">Already have an account? <Link to={SIGNIN}>Sign In</Link></p>
+                                </form>
                                 <GoogleLogin button_color_class="white" other_classes="black-text" title='Sign In With Google'/>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>

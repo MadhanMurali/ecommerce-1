@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit'
 export const userSlice = createSlice({
     name: 'app',
     initialState: {
-        logging_in: false,
+        previously_requested_page: null,
+        signing_in: false,
     },
     reducers: {
         update: (state, action) => {
@@ -15,7 +16,8 @@ export const userSlice = createSlice({
         reset: (state) => {
             return {
                 ...state,
-                logging_in: false,
+                previously_requested_page: null,
+                signing_in: false,
             }
         }
     }

@@ -2,7 +2,7 @@ import React, { lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import AuthenticateRoute from '../Globals/AuthenticateRoute';
-import { HOME, PRODUCTS, PRODUCT_VIEW, SIGNIN, SIGNUP, CHECKOUT, CONTACT_US, PROFILE, SIGNED_IN } from '../Globals/PathConstants';
+import { HOME, PRODUCTS, PRODUCT_VIEW, SIGNIN, SIGNUP, CHECKOUT, CONTACT_US, PROFILE } from '../Globals/PathConstants';
 
 const Home = lazy( () => import('./Home/Home') );
 const Products = lazy( () => import('./Products/Products') );
@@ -28,7 +28,7 @@ const Routes = ({user}) => {
             <Route  path={CHECKOUT} component={CheckOut}  />           
             <Route exact path={CONTACT_US} component={ContactUs} />
             {/* <Route path={PROFILE} component={Profile} /> */}
-            <AuthenticateRoute path={PROFILE} component={Profile} user={user} requirement={SIGNED_IN}/>
+            <AuthenticateRoute path={PROFILE} component={Profile} user={user}/>
         </Switch>
     );
 }

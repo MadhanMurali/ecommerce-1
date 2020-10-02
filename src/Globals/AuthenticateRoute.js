@@ -9,16 +9,11 @@ const AuthenticateRoute = (props) => {
     const location = useLocation();
 
     useEffect( () => {
-        switch (props.requirement) {
-            case SIGNED_IN:
-                return setRoute (
-                       (props.user.signed_in)
-                            ? <Route {...props} />
-                            : <Redirect to={SIGNIN} />
-                       );
-            default:
-                return setRoute (<Redirect to={HOME} />);
-        }
+        setRoute (
+            (props.user.signed_in)
+                 ? <Route {...props} />
+                 : <Redirect to={SIGNIN} />
+        );
     }, [location]);
 
     return route;

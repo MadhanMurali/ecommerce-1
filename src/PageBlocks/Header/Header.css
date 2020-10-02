@@ -26,3 +26,7 @@
 .prescription > a > i{
     line-height:36px !important;
 }
+
+.btn, .btn-floating {
+    box-shadow: none;
+}

@@ -97,7 +97,6 @@ const App = React.memo (function App({store}) {
   return (
     <div className="App">
         <Suspense fallback={<SuperSimpleLoadingScreen />}>
-
           <GAuth2Context.Provider value={googleAuth2}>
             {
               (appLoggingIn)
@@ -105,32 +104,6 @@ const App = React.memo (function App({store}) {
                 : page
             }            
           </GAuth2Context.Provider>
-
-          <Header />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/products" component={Products} >
-              
-            </Route>
-            <Route path="/product-view" component={ProductView}>
-              
-            </Route>
-            <Route  path="/login" component={LoginSM}  />
-            <Route  path="/signup" component={SignupSM}  />
-            <Route  path="/cart" component={Cart}  />
-            <Route  path="/wish-list" component={WishList}  />
-            <Route  path="/checkout" component={CheckOut}  />           
-            <Route exact path="/contact-us">
-              <ContactUs />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-          </Switch>
-          <Footer />
-
         </Suspense>
     </div>
   );

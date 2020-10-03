@@ -1,6 +1,7 @@
 import React from 'react';
 import './product.css'
 import { Redirect } from "react-router"
+import { HOME } from '../../Globals/PathConstants';
 const Product = (props) => {
     
     const { product } = props;
@@ -8,7 +9,7 @@ const Product = (props) => {
 
     return (
         
-            <div  class="col l3 m6 s12 hoverable" onClick={() => <Redirect to='/' />}>
+            <div  class="col l3 m6 s12 hoverable" onClick={() => <Redirect to={HOME} />}>
 
             <div  class="card shop-products">
 

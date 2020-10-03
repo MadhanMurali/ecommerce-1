@@ -17,6 +17,7 @@ import Categories from './Categories/Categories';
 import AnchorButton from '../../Utilities/Link/AnchorButton/AnchorButton';
 import CategoriesResponsive from './Categories/CategoriesResponsive/CategoriesResponsive';
 import Prescription from './prescription/prescription';
+import { HOME } from '../../Globals/PathConstants';
 
 
 const API = "http://localhost:3000/"
@@ -47,13 +48,18 @@ const Header = () => {
             <nav className="nav-extended teal lighten-2">
                 <div className="nav-wrapper">
 
-                    <Link to="/" className="brand-logo header-logo left">
+                    <Link to={HOME} className="brand-logo header-logo left">
                         <img src={Logo} alt="Logo" className="header-logo-img"></img>
                     </Link>
 
                     <LargeScreenList button_color_class="teal darken-3"/>
 
-                    <SmallScreenSideMenu menu_button_color_class="teal darken-3" link_color_class="black-text"/>
+                    <SmallScreenSideMenu 
+                        menu_button_color_class="teal darken-3" 
+                        title_color_class="white-text" 
+                        icon_color_class="white-text"
+                        options_button_color_class="teal darken-3"
+                    />
 
                     {/* <SmallScreenModal menu_button_color_class="teal darken-3" link_color_class="black-text"/> */}
 
@@ -72,27 +78,24 @@ const Header = () => {
                         <div className="col s12 m12 l4">
                             {/* <SearchBar color_class="white" icon_color_class="purple-text"/> */}
                             <SearchBar
-                            value={value}
-                            placeholder={"Search Medicines"}
-                            onChange={(newValue) => {setValue( newValue )}}
-                            onRequestSearch={() => search_products(value)}
-                        />
-
-
-
-
-                        
+                                value={value}
+                                placeholder={"Search Medicines"}
+                                onChange={(newValue) => {setValue( newValue )}}
+                                onRequestSearch={() => search_products(value)}
+                            />
                         </div>
                         <div className="col s12 m6 l4 prescription" style={{'textAlign':'center'}}>
 
-                        <AnchorButton
-                    icon_name="cloud_upload" 
-                    title="Upload Prescription" 
-                    other_classes="waves-effect waves-light  text-white-3 modal-trigger"
-                    href="#prescription-modal"
-                    using_router={false}
-                />
-                    {/* <a class="waves-effect waves-light btn-medium"><i class="material-icons right">cloud_upload</i>Upload</a> */}
+
+                            <AnchorButton
+                                icon_name="cloud_upload" 
+                                title="Upload Prescription" 
+                                other_classes="waves-effect waves-light  text-white-3 modal-trigger"
+                                href="#prescription-modal"
+                                using_router={false}
+                            />
+                            {/* <a class="waves-effect waves-light btn-medium"><i class="material-icons right">cloud_upload</i>Upload</a> */}
+
         
                         </div>
                     </div>

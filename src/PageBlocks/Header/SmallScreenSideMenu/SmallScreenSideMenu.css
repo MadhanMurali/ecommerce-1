@@ -3,3 +3,7 @@
     line-height: 32px !important;
     float: none !important;
 }
+
+.small-screen-account {
+    margin: 10px auto 0 auto !important;
+}

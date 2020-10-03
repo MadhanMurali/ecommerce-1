@@ -3,9 +3,23 @@
   vertical-align: top;
 }
 
-.btn{
-  border: 1px solid #d50000;
+nav ul a.btn, nav ul a.btn-floating {
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0;
 }
+
+/* used to center social image in account button (header)*/
+.center-profile-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+/* .btn{
+  border: 1px solid #d50000;
+} */
 
 .valign-wrapper { /* vertical align fix: materialize css*/
   flex-wrap: wrap;

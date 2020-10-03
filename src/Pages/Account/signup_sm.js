@@ -6,17 +6,36 @@ import twitter from '../../assets/img/account/twiitter.png';
 import lin from '../../assets/img/account/linkedin.png';
 
 import {  Link } from "react-router-dom";
-import "./signup.css";
+
+import { getClientIp, getRequestToken, GRAPHQL_URL, LOCAL_STORAGE_NAMES, SIGN_IN_METHOD } from "../../Globals/Config";
+import { connect } from 'react-redux';
+import { login } from '../../Globals/ReduxStores/UserSlice';
+
+import "./signup_sm.css";
 
 import "materialize-css/dist/css/materialize.min.css";
+import GoogleLogin from "../../PageBlocks/GoogleAccount/LogIn/LogIn";
+import { SIGNIN } from "../../Globals/PathConstants";
 
+const SIGN_IN_MUTATION = `mutation SignUpAction($first_name: String, $last_name: String, $email_id: String, $client_ip: String, $request_token: String, $mobile_no1: String) {
+    SignUpAction(first_name: $first_name, last_name: $last_name, email_id: $email_id, client_ip: $client_ip, request_token: $request_token, mobile_no1: $mobile_no1) {
+        message,
+        token,
+    }
+}`;
 
-export default class SignupSM extends Component {
+class SignupSM extends Component {
     constructor() {
         super();
         this.state = {
-            input: {},
-            errors: {}
+            input: {
+                first_name: '', last_name: '', telephone: '',
+                email: '', password: '', confirm_password: '',
+            },
+            errors: {
+                first_name: '', last_name: '', telephone: '', 
+                email: '', password: '', confirm_password: '',
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -32,23 +51,66 @@ export default class SignupSM extends Component {
         });
     }
 
-    handleSubmit(event) {
+    async handleSubmit(event) {
         event.preventDefault();
 
         if (this.validate()) {
-            
 
-            let input = {};
-            input["first_name"] = "";
-            input["last_name"] = "";
-            input["telephone"] = "";
-            input["email"] = "";
-            input["password"] = "";
-            input["confirm_password"] = "";
+            const signInMutationVariables = { 
+                first_name: this.state.input["first_name"],
+                last_name: this.state.input["last_name"],
+                email_id: this.state.input["email"],
+                password: this.state.input["confirm_password"],
+                mobile_no: this.state.input["telephone"],
+                client_ip: await getClientIp(),
+                request_token: getRequestToken(),
+            }
 
-            this.setState({ input: input });
-            
-            alert('Account created');
+            //used to reuse signInMutationVariables with redux store
+            const userState = ({ client_ip, request_token, social_id, password, ...rest }) => rest;
+    
+            fetch(GRAPHQL_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: SIGN_IN_MUTATION,
+                    variables: signInMutationVariables,
+                })
+            })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                if (response.data.SignUpAction['message'] === "SUCCESS") {
+                    let token = response.data.SignUpAction['token'];
+                    localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD, SIGN_IN_METHOD.NATIVE);
+                    localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN, true);
+                    this.props.login ({
+                        ...userState(signInMutationVariables),
+                        authorization_token: token,
+                    });
+                    alert('Account created');
+                }
+                else {
+                    throw(response.data.SignUpAction['message']);
+                }
+            })
+            .then(() => {
+
+                //clean up after sign in
+                let input = {};
+                input["first_name"] = "";
+                input["last_name"] = "";
+                input["telephone"] = "";
+                input["email"] = "";
+                input["password"] = "";
+                input["confirm_password"] = "";
+    
+                this.setState({ input: input });
+            })
+            .catch( err => { alert('Account creation failed'); console.log(err); });
         }
     }
 
@@ -145,137 +207,145 @@ export default class SignupSM extends Component {
     }
     render() {
         return (
-            <div class="container">
+            <div className="container">
                 <center>
+                <div className="row">
+                    <div className="col s12 ">
+                        <div className="col l3"></div>
+                        <div className="z-depth-1 lighten-4 col s12 m12 l6 formGroup" >
+                            <h4 className="indigo-text">Create new account</h4>
+                            <p className="red-text">All fields are mandatory</p>
+                            <div className="signup-form-container">
+                                <form className="col s12 signup-form" method="post"  onSubmit={this.handleSubmit}>
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <i className="material-icons prefix iconColor">account_circle</i>
+                                            <input id='first_name' type='text' name='first_name' className='validate'  value={this.state.input.first_name}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.first_name}</div>
+                                            <label htmlFor="first_name">First Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <i className="material-icons prefix">account_circle</i>
+                                            <input id='last_name' type='text' name='last_name' className='validate ' value={this.state.input.last_name}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.last_name}</div>
+                                            <label htmlFor='last_name'>Last Name</label>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="input-field col s12">
+                                            <i className="material-icons prefix">phone</i>
+                                            <input id='telephone' name='telephone' type='tel' className='validate ' value={this.state.input.telephone}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.telephone}</div>
+                                            <label htmlFor='telephone'>Mobile</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">email</i>
+                                            <input className='validate' type='email' name='email' id='email'  value={this.state.input.email}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.email}</div>
+                                            <label htmlFor='email'>Email</label>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">lock</i>
+                                            <input className='validate' type='password' name='password' id='password'  value={this.state.input.password}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.password}</div>
+                                            <label htmlFor='password'>Password</label>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">lock</i>
+                                            <input className='validate' type='password' name='confirm_password' id='confirm_password'  value={this.state.input.confirm_password}
+                                                onChange={this.handleChange} />
+                                            <div className='red-text'>{this.state.errors.confirm_password}</div>
+                                            <label htmlFor='confirm_password'>Confirm Password</label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="row">
+                                        <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
+                                    </div>
+
+                                    <p className="indigo-text">Already have an account? <Link to={SIGNIN}>Sign In</Link></p>
+                                </form>
+                                <GoogleLogin button_color_class="white" other_classes="black-text" title='Sign In With Google'/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* <div className="col s12  m2 l2 ">
+                <div className="section"></div>
+                <div className="section"></div>
+                <div className="section"></div>
+                <div className="section"></div>
+                    <div className="row">
+                    <h5>or</h5>
+                </div>
+                </div> */}
+
+
+                {/* <div className="col s12 m5 l5 ">
                 
-
-                <div class="row">
-                    <div class="col s12 ">
-                        
-                         
-                            <h4 class="indigo-text">    Create new account   </h4>
-                            <p>All fields are mandatory</p>
-                                <div className="col l3"></div>
-                                <div class="z-depth-5 lighten-4 col s12 m12 l6 formGroup" >
-
-                                    <form class="col s12" method="post"  onSubmit={this.handleSubmit}>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                
-                                                <i class="material-icons prefix iconColor">account_circle</i>
-                                                <input id='first_name' type='text' name='first_name' class='validate'  value={this.state.input.first_name}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.first_name}</div>
-                                                <label for="first_name">First Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">account_circle</i>
-                                                <input id='last_name' type='text' name='last_name' class='validate ' value={this.state.input.last_name}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.last_name}</div>
-                                                <label for='last_name'>Last Name</label>
-                                            </div>
-                                        </div>
-
-                                            <div class="row">
-                                                <div class="input-field col s12">
-                                                    <i class="material-icons prefix">phone</i>
-                                                    <input id='telephone' name='telephone' type='tel' class='validate ' value={this.state.input.telephone}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.telephone}</div>
-                                                    <label for='telephone'>Mobile</label>
-                                                </div>
-                                            </div>
-                                       
-                                        <div class="row">
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">email</i>
-                                                <input class='validate' type='email' name='email' id='email'  value={this.state.input.email}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.email}</div>
-                                                <label for='email'>Email</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">lock</i>
-                                                <input class='validate' type='password' name='password' id='password'  value={this.state.input.password}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.password}</div>
-                                                <label for='password'>Password</label>
-                                            </div>
-                                        </div>
-
-                                            <div class="row">
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">lock</i>
-                                                <input class='validate' type='password' name='confirm_password' id='confirm_password'  value={this.state.input.confirm_password}
-                                                    onChange={this.handleChange} /><div className='red-text'>{this.state.errors.confirm_password}</div>
-                                                <label for='confirm_password'>Confirm Password</label>
-                                            </div>
-                                            </div>
-                                        
-                                        
-
-                                        <div class="row">
-                                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-red teal lighten-2'>Create Account</button>
-                                        </div>
-
-                                        <p class="indigo-text">Already have an account?</p>
-                                        <h6><Link to="/login">Login</Link></h6>
-
-                                    </form>
-                                </div>
-                            
-                        
+                    <div className="row">
+            
+                    <h4 className="indigo-text">Signup with Social Media</h4>
+                    </div><div className="section"></div>
+                    <div className="section"></div>
+                    <div className="row">
+                    <a href="#"><img className="responsive-img" src={google}/></a>
                     </div>
 
-
-                    {/* <div class="col s12  m2 l2 ">
-                    <div class="section"></div>
-                    <div class="section"></div>
-                    <div class="section"></div>
-                    <div class="section"></div>
-                        <div class="row">
-                        <h5>or</h5>
-                    </div>
-                    </div> */}
-
-
-                    {/* <div class="col s12 m5 l5 ">
-                    
-                        <div class="row">
-                   
-                        <h4 class="indigo-text">Signup with Social Media</h4>
-                        </div><div class="section"></div>
-                        <div class="section"></div>
-                        <div class="row">
-                        <a href="#"><img class="responsive-img" src={google}/></a>
+                    <div className="section"></div>
+                    <div className="row">   
+                    <a href="#"><img className="responsive-img" src={fb}/></a>
                         </div>
 
-                        <div class="section"></div>
-                        <div class="row">   
-                        <a href="#"><img class="responsive-img" src={fb}/></a>
-                            </div>
-
-                            <div class="section"></div>
-                        <div class="row">        
-                            
-                        <a href="#"><img class="responsive-img" src={twitter}/></a>
-                            </div>
-                            <div class="section"></div>
-                        <div class="row">        
-                            
-                        <a href="#"><img class="responsive-img" src={lin}/></a>
-                            </div>
-                    </div> */}
-                
+                        <div className="section"></div>
+                    <div className="row">        
+                        
+                    <a href="#"><img className="responsive-img" src={twitter}/></a>
+                        </div>
+                        <div className="section"></div>
+                    <div className="row">        
+                        
+                    <a href="#"><img className="responsive-img" src={lin}/></a>
+                        </div>
+                </div> */}
+                </center>
             </div>
-            </center>
-            </div>
-              )
-
+        );
     }
-
-
-
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = () => {
+    return {
+        login
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps()
+)(SignupSM);

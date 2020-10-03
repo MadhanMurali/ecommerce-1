@@ -5,18 +5,27 @@ import google from '../../assets/img/account/google.png';
 import twitter from '../../assets/img/account/twiitter.png';
 import lin from '../../assets/img/account/linkedin.png';
 
-import "./login.css";
+import "./login_sm.css";
 
 import {  Link } from "react-router-dom";
 
 import "materialize-css/dist/css/materialize.min.css";
+import GoogleLogin from "../../PageBlocks/GoogleAccount/LogIn/LogIn";
+import { connect } from 'react-redux';
+import { login } from '../../Globals/ReduxStores/UserSlice';
 
-export default class LoginSM extends Component {
+import { SIGNUP } from '../../Globals/PathConstants';
+
+class LoginSM extends Component {
     constructor() {
         super();
         this.state = {
-            input: {},
-            errors: {}
+            input: {
+                email: '', password: '',
+            },
+            errors: {
+                email: '', password: '',
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -91,106 +100,95 @@ export default class LoginSM extends Component {
     }
     render() {
         return (
-            <div class="container">
-            <center>
-               
-           
-                
-
-                <div class="row">
-                    <div class="col s12">
-                        {/* <div className="left"> */}
-                            
-                            <h5 class="indigo-text">Please, login into your account</h5>
+            <div className="container">
+                <center>
+                    <div className="row">
+                        <div className="col s12">
+                            {/* <div className="left"> */} 
                             <div className="col l3"></div>
-                                <div class="z-depth-5 lighten-4 col s12 m12 l6  formGroup" >
-
-                                    <form class="col s12" method="post" onSubmit={this.handleSubmit}>
-
-                                        <div class='row'>
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">mail_outline</i>
-                                                <input class='validate' type='email' name='email' id='email' class="form-control" value={this.state.input.email}
-                                                    onChange={this.handleChange} /><div className="red-text">{this.state.errors.email}</div>
-                                                <label for='email'>Enter your email or phone</label>
-                                            </div>
+                            <div className="z-depth-1 lighten-4 col s12 m12 l6 formGroup" >
+                                <div className="signin-form-container">
+                                    <form className="col s12 signin-form" method="post" onSubmit={this.handleSubmit}>
+                                        <h5 className="indigo-text">Login</h5>
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">mail_outline</i>
+                                            <input className='validate' type='email' name='email' id='email' className="form-control" value={this.state.input.email}
+                                                onChange={this.handleChange} />
+                                            <div className="red-text">{this.state.errors.email}</div>
+                                            <label htmlFor='email'>Enter your email or phone</label>
                                         </div>
 
-                                        <div class='row'>
-                                            <div class='input-field col s12'>
-                                                <i class="material-icons prefix">lock_outline</i>
-                                                <input class='validate' type='password' name='password' id='password' class="form-control" value={this.state.input.password}
-                                                    onChange={this.handleChange} /><div className="red-text">{this.state.errors.password}</div>
-                                                <label for='password'>Enter your password</label>
-                                            </div>
-
-
-
-
+                                        <div className='input-field col s12'>
+                                            <i className="material-icons prefix">lock_outline</i>
+                                            <input className='validate' type='password' name='password' id='password' className="form-control" value={this.state.input.password}
+                                                onChange={this.handleChange} />
+                                            <div className="red-text">{this.state.errors.password}</div>
+                                            <label htmlFor='password'>Enter your password</label>
                                         </div>
-                                        <label className='float: right;'>
-                                            <a class='pink-text' href='#!'><b>Forgot Password?</b></a>
-                                        </label>
-                                        <p>
+
+                                        <p className="left-align signin-remember-me">
                                             <label>
-                                                <input type="checkbox" />
-                                                <span class="left">Remember me</span>
+                                                <input type="checkbox"/>
+                                                <span>Remember me</span>
                                             </label>
                                         </p>
-                                        <br />
 
-                                        <div class='row'>
-                                            <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light teal lighten-2'>Login</button>
+                                        <p>
+                                            <a className='pink-text' href='#!'><b>Forgot Password?</b></a>
+                                        </p>
+
+                                        <div className='row'>
+                                            <button type='submit' name='btn_login' className='col s12 btn btn-large waves-effect waves-light teal lighten-2'>Login</button>
                                         </div>
 
-                                        <p class="indigo-text">Not yet registered!</p>
-                                        <h6><Link to="/signup">Create new Account</Link></h6>
-
+                                        <p className="indigo-text">Not registered yet?<br/><Link to={SIGNUP}>Create new Account</Link></p>
                                     </form>
+                                    <GoogleLogin button_color_class="white" other_classes="black-text" title='Sign In With Google'/>
                                 </div>
-                            
-                        {/* </div> */}
-                    </div>
-
-                    {/* <div class="col s12  m2 l2 ">
-                    <div class="section"></div>
-                    <div class="section"></div>
-                    <div class="section"></div>
-                    <div class="section"></div>
-                        <div class="row">
-                        <h5>or</h5>
-                    </div>
-                    </div> */}
-                   
-                    {/* <div class="col s12  m5 l5 ">
-                    <div className="right">
-                        <h5 class="indigo-text">Login with Social Media</h5>
-
-                        <div class="section"></div>
-                        <div class="row">
-                        <a href="#"><img class="responsive-img" src={google}/></a>
+                                
+                            </div>
+                            {/* </div> */}
                         </div>
 
+                        {/* <div class="col s12  m2 l2 ">
                         <div class="section"></div>
-                        <div class="row">   
-                        <a href="#"><img class="responsive-img" src={fb}/></a>
+                        <div class="section"></div>
+                        <div class="section"></div>
+                        <div class="section"></div>
+                            <div class="row">
+                            <h5>or</h5>
+                        </div>
+                        </div> */}
+                        
+                        {/* <div class="col s12  m5 l5 ">
+                        <div className="right">
+                            <h5 class="indigo-text">Login with Social Media</h5>
+
+                            <div class="section"></div>
+                            <div class="row">
+                            <a href="#"><img class="responsive-img" src={google}/></a>
                             </div>
 
                             <div class="section"></div>
-                        <div class="row">        
-                            
-                        <a href="#"><img class="responsive-img" src={twitter}/></a>
-                            </div>
-                            <div class="section"></div>
-                        <div class="row">        
-                            
-                        <a href="#"><img class="responsive-img" src={lin}/></a>
-                            </div>
-               
+                            <div class="row">   
+                            <a href="#"><img class="responsive-img" src={fb}/></a>
+                                </div>
+
+                                <div class="section"></div>
+                            <div class="row">        
+                                
+                            <a href="#"><img class="responsive-img" src={twitter}/></a>
+                                </div>
+                                <div class="section"></div>
+                            <div class="row">        
+                                
+                            <a href="#"><img class="responsive-img" src={lin}/></a>
+                                </div>
+                
+                        </div>
+                        </div> */}
                     </div>
-                </div> */}
-            </div>
-            </center>
+                </center>
             </div>
         )
 
@@ -200,3 +198,19 @@ export default class LoginSM extends Component {
 
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
+const mapDispatchToProps = () => {
+    return {
+        login
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps()
+)(LoginSM);

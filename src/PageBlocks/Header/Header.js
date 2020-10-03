@@ -83,7 +83,7 @@ const Header = () => {
 
                         
                         </div>
-                        <div className="col s12 m6 l4 prescription" style={{'text-align':'center'}}>
+                        <div className="col s12 m6 l4 prescription" style={{'textAlign':'center'}}>
 
                         <AnchorButton
                     icon_name="cloud_upload" 

@@ -35,11 +35,11 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/products">
-              <Products />
+            <Route path="/products" component={Products} >
+              
             </Route>
-            <Route exact path="/product-view">
-              <ProductView />
+            <Route path="/product-view" component={ProductView}>
+              
             </Route>
             <Route  path="/login" component={LoginSM}  />
             <Route  path="/signup" component={SignupSM}  />

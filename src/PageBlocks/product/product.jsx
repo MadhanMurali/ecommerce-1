@@ -1,18 +1,18 @@
 import React from 'react';
 import './product.css'
-
+import { Redirect } from "react-router"
 const Product = (props) => {
-    console.log(props)
+    
     const { product } = props;
-    console.log(product);
+    
 
     return (
         
-            <div  class="col l3 m6 s12 hoverable">
+            <div  class="col l3 m6 s12 hoverable" onClick={() => <Redirect to='/' />}>
 
             <div  class="card shop-products">
 
-            <div  class="card-image">
+            <div  class="card-image" >
 
             <img  src={product}  class="shop-product-img"/>
 

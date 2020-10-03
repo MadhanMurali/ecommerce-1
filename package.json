@@ -19,7 +19,6 @@
     "progress-tracker": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-google-login": "^5.1.21",
     "react-images-upload": "^1.2.8",
     "react-images-uploading": "^3.0.1",
     "react-multi-carousel": "^2.5.5",

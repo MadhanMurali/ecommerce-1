@@ -8,15 +8,24 @@ export const userSlice = createSlice({
         last_name: null,
         email_id: null,
         image_address: null,
+        mobile_no: null,
         authorization_token: null,
-        logged_in: false,
+        signed_in: false,
+        previous_sign_in_method: null,
+        previously_signed_in: false,
     },
     reducers: {
+        updatePreviousState: (state, action) => {
+            return {
+                ...state,
+                ...action.payload,
+            }
+        },
         login: (state, action) => {
             return {
                 ...state,
                 ...action.payload,
-                logged_in : true,
+                signed_in : true,
             }
         },
         logout: (state) => {
@@ -27,13 +36,16 @@ export const userSlice = createSlice({
                 last_name: null,
                 email_id: null,
                 image_address: null,
+                mobile_no: null,
                 authorization_token: null,
-                logged_in: false,
+                signed_in: false,
+                previous_sign_in_method: null,
+                previously_signed_in: false,
             }
         }
     }
 });
 
-export const { login, logout } = userSlice.actions;
+export const { login, logout, updatePreviousState } = userSlice.actions;
 
 export default userSlice.reducer;

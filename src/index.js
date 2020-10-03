@@ -16,7 +16,7 @@ ReactDOM.render(
   <ApolloProvider client={client}>
     <Provider store={Store}>
       <Router>
-        <App />
+        <App store={Store}/>
       </Router>
     </Provider>
   </ApolloProvider>,

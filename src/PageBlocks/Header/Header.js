@@ -86,6 +86,7 @@ const Header = () => {
                         </div>
                         <div className="col s12 m6 l4 prescription" style={{'textAlign':'center'}}>
 
+
                             <AnchorButton
                                 icon_name="cloud_upload" 
                                 title="Upload Prescription" 
@@ -94,6 +95,7 @@ const Header = () => {
                                 using_router={false}
                             />
                             {/* <a class="waves-effect waves-light btn-medium"><i class="material-icons right">cloud_upload</i>Upload</a> */}
+
         
                         </div>
                     </div>

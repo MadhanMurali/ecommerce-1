@@ -14,7 +14,7 @@ import Routes from './Pages/Routes';
 import GoogleAccountInit from './PageBlocks/GoogleAccount/GoogleAccountInit';
 import { CategoriesContext, GAuth2Context, getRequestToken, GOOGLE_CLIENT_ID, LOCAL_STORAGE_NAMES } from './Globals/Config';
 import { updatePreviousState } from './Globals/ReduxStores/UserSlice';
-import { reset, update } from './Globals/ReduxStores/AppSlice';
+import { update } from './Globals/ReduxStores/AppSlice';
 import { useHistory, useLocation } from 'react-router-dom';
 import { HOME, SIGNIN, SIGNUP } from './Globals/PathConstants';
 import { GET_CATEGORIES, GET_SUB_CATEGORIES } from './Globals/Graphql/QueryTemplates/Categories';
@@ -36,7 +36,16 @@ const App = React.memo (function App({store}) {
 
   //categories -- start
   const [categories, setCategories] = useState(0);
-  const [ getCategories, { loading: categoriesLoading, data: categoriesData, error: categoriesError } ] = useLazyQuery(GET_CATEGORIES)
+  const [ 
+    getCategories, 
+    { 
+      loading: categoriesLoading, 
+      data: categoriesData, 
+      error: categoriesError 
+    }
+  ] = useLazyQuery(GET_CATEGORIES, {
+        fetchPolicy: "cache-and-network"
+      })
 
   useEffect ( () => {
       dispatch ( update ({
@@ -58,53 +67,6 @@ const App = React.memo (function App({store}) {
         }));
   }, [categories])
   //Categories -- end
-
-  //Sub Categories -- start
-  const [subCategories, setSubCategories] = useState(0);
-  const [ getSubCategories, { loading: subCategoriesLoading, data: subCategoriesData, error: subCategoriesError } ] = useLazyQuery(GET_SUB_CATEGORIES)
-
-  useEffect ( () => {
-    const subCategoriesFunc = () => {
-      dispatch ( update ({
-        loading: true
-      }));
-
-      getSubCategories( {
-        variables: { 
-            Authorization: getRequestToken(),
-            item_category_id: categories["getCategory"][0]["id"]
-        }
-      });
-
-      // Object.keys(categories["getCategoryList"]).forEach( (categoryKey) => {
-      //   console.log(categoryKey)
-      //   console.log(categories["getCategoryList"][categoryKey]["id"])
-      //   getSubCategories( {
-      //     variables: { 
-      //         Authorization: getRequestToken(),
-      //         item_category_id: categories["getCategoryList"][categoryKey]["id"]
-      //     }
-      //   });
-      //   console.log(subCategoriesData, subCategoriesError);
-      // });
-    }
-
-    if(categories){
-      subCategoriesFunc();
-    }
-  }, [categories])
-  useEffect( () => {
-      setSubCategories(subCategoriesData)
-  }, [subCategoriesLoading])
-  useEffect( () => {
-      if (subCategories) {
-        console.log(subCategories, subCategoriesError);
-        dispatch ( update ({
-          loading: false
-        }));
-      }
-  }, [subCategories])
-  //Sub Categories -- end
 
   useEffect( () => {
     const previously_signed_in = localStorage.getItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN);

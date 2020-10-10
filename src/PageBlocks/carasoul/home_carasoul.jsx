@@ -94,10 +94,14 @@ class HomeCarasoul extends React.Component {
         </div>
       );
     };
-    const categories = images.map((each, index) => (
+    let categories = this.props.categories.getCategory.map((category, index) => (
      
-      <CategoryItem  key={index}  {...each} />
-   ));
+      <CategoryItem 
+        key={category.id}
+        name={category.item_category_name}
+        url={category.image_address}
+      />
+    ));
     return (
       <Carousel
         // ssr={false}

@@ -1,4 +1,4 @@
-.cat-img{
+.cat-img {
     height: 140px;
     width: 140px;
     box-sizing: border-box;
@@ -6,6 +6,7 @@
     border: 5px solid #f5f5f5;
     padding: 0px;
     margin: 0 auto;
+    border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;

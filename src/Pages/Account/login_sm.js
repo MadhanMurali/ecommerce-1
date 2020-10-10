@@ -199,39 +199,39 @@ class LoginSM extends Component {
                             {/* </div> */}
                         </div>
 
-                        {/* <div class="col s12  m2 l2 ">
-                        <div class="section"></div>
-                        <div class="section"></div>
-                        <div class="section"></div>
-                        <div class="section"></div>
-                            <div class="row">
+                        {/* <div className="col s12  m2 l2 ">
+                        <div className="section"></div>
+                        <div className="section"></div>
+                        <div className="section"></div>
+                        <div className="section"></div>
+                            <div className="row">
                             <h5>or</h5>
                         </div>
                         </div> */}
                         
-                        {/* <div class="col s12  m5 l5 ">
-                        <div className="right">
-                            <h5 class="indigo-text">Login with Social Media</h5>
+                        {/* <div className="col s12  m5 l5 ">
+                        <div classNameName="right">
+                            <h5 className="indigo-text">Login with Social Media</h5>
 
-                            <div class="section"></div>
-                            <div class="row">
-                            <a href="#"><img class="responsive-img" src={google}/></a>
+                            <div className="section"></div>
+                            <div className="row">
+                            <a href="#"><img className="responsive-img" src={google}/></a>
                             </div>
 
-                            <div class="section"></div>
-                            <div class="row">   
-                            <a href="#"><img class="responsive-img" src={fb}/></a>
+                            <div className="section"></div>
+                            <div className="row">   
+                            <a href="#"><img className="responsive-img" src={fb}/></a>
                                 </div>
 
-                                <div class="section"></div>
-                            <div class="row">        
+                                <div className="section"></div>
+                            <div className="row">        
                                 
-                            <a href="#"><img class="responsive-img" src={twitter}/></a>
+                            <a href="#"><img className="responsive-img" src={twitter}/></a>
                                 </div>
-                                <div class="section"></div>
-                            <div class="row">        
+                                <div className="section"></div>
+                            <div className="row">        
                                 
-                            <a href="#"><img class="responsive-img" src={lin}/></a>
+                            <a href="#"><img className="responsive-img" src={lin}/></a>
                                 </div>
                 
                         </div>

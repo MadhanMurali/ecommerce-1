@@ -7,7 +7,7 @@ export default function ProductList(props) {
       
           <div className="cart-container cart-products">
           
-          <table class="centered " >
+          <table className="centered " >
             <thead>
               <tr>
                   <th>Product</th>
@@ -37,8 +37,8 @@ export default function ProductList(props) {
                       onChange={props.onChangeProductQuantity.bind(this, index)}
                     /></td>
                 <td>{formatCurrency(product.quantity*product.price)}</td>
-                <td><a class="btn-floating red">
-                  <i class="material-icons" onClick={props.onRemoveProduct.bind(this, index)}>delete</i></a>
+                <td><a className="btn-floating red">
+                  <i className="material-icons" onClick={props.onRemoveProduct.bind(this, index)}>delete</i></a>
                 </td>
                </tr>
             </tbody>    );

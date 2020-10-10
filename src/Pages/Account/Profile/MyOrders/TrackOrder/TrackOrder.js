@@ -53,30 +53,30 @@ const TrackOrder = () => {
         <>
         <OrderCardPending />
         <div className="container hide-on-small-only">
-            <ul class="progress-tracker progress-tracker--text">
-                <li class="progress-step is-complete">
-                    <div class="progress-marker"></div>
+            <ul className="progress-tracker progress-tracker--text">
+                <li className="progress-step is-complete">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[0]}</h6>
                         {orderedMessage}
                     </div>
                 </li>
-                <li class="progress-step is-complete">
-                    <div class="progress-marker"></div>
+                <li className="progress-step is-complete">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[1]}</h6>
                         {packedMessage}
                     </div>
                 </li>
-                <li class="progress-step is-complete">
-                    <div class="progress-marker"></div>
+                <li className="progress-step is-complete">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[2]}</h6>
                         {shippedMessage}
                     </div>
                 </li>
-                <li class="progress-step">
-                    <div class="progress-marker"></div>
+                <li className="progress-step">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[3]}</h6>
                         {deliveredMessage}
@@ -85,30 +85,30 @@ const TrackOrder = () => {
             </ul>
         </div>
         <div className="container hide-on-med-and-up">
-            <ul class="progress-tracker progress-tracker--vertical">
-                <li class="progress-step is-complete">
-                    <div class="progress-marker"></div>
+            <ul className="progress-tracker progress-tracker--vertical">
+                <li className="progress-step is-complete">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[0]}</h6>
                         {orderedMessage}
                     </div>
                 </li>
-                <li class="progress-step is-complete">
-                    <div class="progress-marker"></div>
+                <li className="progress-step is-complete">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[1]}</h6>
                         {packedMessage}
                     </div>
                 </li>
-                <li class="progress-step is-complete">
-                    <div class="progress-marker"></div>
+                <li className="progress-step is-complete">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[2]}</h6>
                         {shippedMessage}
                     </div>
                 </li>
-                <li class="progress-step">
-                    <div class="progress-marker"></div>
+                <li className="progress-step">
+                    <div className="progress-marker"></div>
                     <div className="progress-text">
                         <h6 className="progress-title">{ORDER_STATUS[3]}</h6>
                         {deliveredMessage}

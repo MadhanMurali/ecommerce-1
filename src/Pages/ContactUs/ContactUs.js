@@ -9,7 +9,7 @@ const ContactUs = () => {
 
     useEffect (() => {
         let textareaAddressElem = document.getElementById("query-text-area");
-        let textAreaAddressInstance = M.CharacterCounter.init();
+        M.CharacterCounter.init(textareaAddressElem);
     });
 
     return (

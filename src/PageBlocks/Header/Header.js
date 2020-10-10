@@ -86,7 +86,7 @@ const Header = () => {
                                 href="#prescription-modal"
                                 using_router={false}
                             />
-                            {/* <a class="waves-effect waves-light btn-medium"><i class="material-icons right">cloud_upload</i>Upload</a> */}
+                            {/* <a className="waves-effect waves-light btn-medium"><i className="material-icons right">cloud_upload</i>Upload</a> */}
 
         
                         </div>

@@ -33,7 +33,7 @@ const SmallScreenSideMenu = ({menu_button_color_class, title_color_class, option
     const user = useSelector(state => state.user);
 
     const profilePic =  (!user.image_address)
-                            ? <i class="material-icons">account_circle</i>
+                            ? <i className="material-icons">account_circle</i>
                             : <img className="center-profile-image" src = {user.image_address} alt=""/>;
 
     const signOutButton = (user.social_id_type === "google")

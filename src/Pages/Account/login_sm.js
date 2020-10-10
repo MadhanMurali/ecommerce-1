@@ -16,16 +16,7 @@ import { login } from '../../Globals/ReduxStores/UserSlice';
 
 import { SIGNUP } from '../../Globals/PathConstants';
 import { getClientIp, GRAPHQL_URL, LOCAL_STORAGE_NAMES, SIGN_IN_METHOD, getRequestToken } from "../../Globals/Config";
-
-const SIGN_IN_MUTATION = `mutation SignInAction($username: String, $client_ip: String, $request_token: String, $password: String) {
-    SignInAction(username: $username, client_ip: $client_ip, request_token: $request_token, password: $password) {
-        first_name,
-        last_name,
-        email_id,
-        message,
-        token,
-    }
-}`;
+import { SIGN_IN_MUTATION } from "../../Globals/Graphql/MutationTemplates/Account";
 
 class LoginSM extends Component {
     constructor() {

@@ -66,6 +66,7 @@ const GoogleAccountInit = (dispatchCallback, auth2) => {
                 }
                 else {
                     alert("Login With Social ID error " + response.data.LoginWithSocialID['message']);
+                    auth2.signOut();
                 }
             })
             .catch( err => console.log("Google Sign In Callback Error: ", err))

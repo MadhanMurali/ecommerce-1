@@ -27,7 +27,7 @@ const Item = ({content, content_color,href,item_bullet_style, using_router}) => 
 }
 
 const CollapsibleListWithLinks = ({
-    list, content_color, heading_bullet_style, item_bullet_style, heading, using_router }) => {
+    list, content_color, heading_bullet_style, item_bullet_style, heading, using_router, field_name }) => {
 
     useEffect( () => {
         let collapsible = document.querySelectorAll('.collapsible');
@@ -41,7 +41,7 @@ const CollapsibleListWithLinks = ({
     const linkList = list.map((item) => {
         return (
             <Item 
-                content = {item.name} 
+                content = {field_name? item[field_name] : item.name} 
                 content_color = {content_color}
                 href = {item.link}
                 item_bullet_style = {item_bullet_style} 

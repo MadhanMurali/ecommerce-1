@@ -15,21 +15,12 @@ const API = "http://localhost:3000/"
 
 const Categories = ({categories}) => {
 
-    const [subCategories, setSubCategories] = useState("");
-    const [subCategoriesLoading, setSubCategoriesLoading] = useState(true);
-
     useEffect( () => {
-        fetch(API + "sub-categories")
-            .then(response => response.json())
-            .then(json =>{
-                setSubCategories(json);
-                setSubCategoriesLoading(false);
-                });
         let elems = document.querySelectorAll('.modal');
         M.Modal.init(elems);
     }, [])
 
-    const categoriesDesktop = categories.map(
+    const categoriesDesktop = categories.getCategory.map(
         category => {
             return (
                 <>
@@ -37,17 +28,16 @@ const Categories = ({categories}) => {
                         other_classes="dropdown-trigger sub-categories-dropdown"
                         key={category.id}
                         link_color_class={"white-text"}
-                        title={category.name}
-                        data_target={category.name}
+                        title={category.item_category_name}
+                        data_target={category.item_category_name}
                         icon_name="arrow_drop_down"
                     />
-                    { (subCategoriesLoading !== true) && 
-                        <SubCategoies 
-                            category_name={category.name} 
-                            sub_categoies={subCategories} 
-                            totalEntriesPerColumn={3}
-                        />
-                    }
+                    <SubCategoies 
+                        category_name={category.item_category_name} 
+                        // sub_categoies={subCategories} 
+                        sub_categoies={category.itemSubCategory} 
+                        totalEntriesPerColumn={3}
+                    />
                 </>
             )
         }

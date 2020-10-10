@@ -4,6 +4,7 @@ export const userSlice = createSlice({
     name: 'app',
     initialState: {
         previously_requested_page: null,
+        loading: false,
         signing_in: false,
     },
     reducers: {
@@ -17,6 +18,7 @@ export const userSlice = createSlice({
             return {
                 ...state,
                 previously_requested_page: null,
+                loading: false,
                 signing_in: false,
             }
         }

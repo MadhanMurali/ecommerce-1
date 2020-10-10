@@ -15,6 +15,17 @@ import { connect } from 'react-redux';
 import { login } from '../../Globals/ReduxStores/UserSlice';
 
 import { SIGNUP } from '../../Globals/PathConstants';
+import { getClientIp, GRAPHQL_URL, LOCAL_STORAGE_NAMES, SIGN_IN_METHOD, getRequestToken } from "../../Globals/Config";
+
+const SIGN_IN_MUTATION = `mutation SignInAction($username: String, $client_ip: String, $request_token: String, $password: String) {
+    SignInAction(username: $username, client_ip: $client_ip, request_token: $request_token, password: $password) {
+        first_name,
+        last_name,
+        email_id,
+        message,
+        token,
+    }
+}`;
 
 class LoginSM extends Component {
     constructor() {
@@ -41,20 +52,67 @@ class LoginSM extends Component {
         });
     }
 
-    handleSubmit(event) {
+    async handleSubmit (event) {
         event.preventDefault();
 
         if (this.validate()) {
             console.log(this.state);
 
-            let input = {};
+            const signInMutationVariables = {
+                username: this.state.input["email"],
+                password: this.state.input["password"],
+                client_ip: await getClientIp(),
+                request_token: getRequestToken(),
+            }
 
-            input["email"] = "";
-            input["password"] = "";
+            fetch(GRAPHQL_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: SIGN_IN_MUTATION,
+                    variables: signInMutationVariables,
+                })
+            })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                if (response.data.SignInAction['message'] === "SUCCESS") {
+                    let token = response.data.SignInAction['token'];
+                    let first_name = response.data.SignInAction['first_name'];
+                    let last_name = response.data.SignInAction['last_name'];
+                    let email_id = response.data.SignInAction['email_id'];
+                    localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUS_SIGN_IN_METHOD, SIGN_IN_METHOD.NATIVE);
+                    localStorage.setItem(LOCAL_STORAGE_NAMES.PREVIOUSLY_SIGNED_IN, true);
+                    this.props.login ({
+                        first_name: first_name,
+                        last_name: last_name,
+                        email_id: email_id,
+                        authorization_token: token,
+                    });
+                    alert('Logged in');
+                }
+                else {
+                    console.log("Log in ", signInMutationVariables);
+                    throw(response.data.SignUpAction['message']);
+                    
+                }
+            })
+            .then(() => {
 
-            this.setState({ input: input });
+                //clean up after sign in
+                let input = {};
 
-            alert('Welcome');
+                input["email"] = "";
+                input["password"] = "";
+    
+                this.setState({ input: input });
+            })
+            .catch( err => { alert('Account creation failed'); console.log(err); });
+
+            // alert('Welcome');
         }
     }
 

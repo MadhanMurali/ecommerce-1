@@ -6,6 +6,7 @@ import { createContext } from 'react';
 
 //constants
 const GRAPHQL_URL = 'https://www.healthcarecrm.vimkes.com/graphql';
+// const GRAPHQL_URL = 'http://192.168.1.11:8080/graphql';
 const GOOGLE_CLIENT_ID = '499502244846-qh11f356nmvglbs38cna4lnu1gc4os47.apps.googleusercontent.com';
 const LOCAL_STORAGE_NAMES = {
   PREVIOUS_SIGN_IN_METHOD: "previous_sign_in_method",
@@ -18,7 +19,7 @@ const SIGN_IN_METHOD = {
 
 const link = createHttpLink({
   uri: GRAPHQL_URL,
-  credentials: 'include'
+  // credentials: 'include'
 });
   
 const client = new ApolloClient({
@@ -41,6 +42,7 @@ const getClientIp = async () => {
 }
 
 const GAuth2Context = createContext(undefined);
+const CategoriesContext = createContext(undefined);
 
 export {
   client,
@@ -50,5 +52,6 @@ export {
   GOOGLE_CLIENT_ID,
   LOCAL_STORAGE_NAMES,
   SIGN_IN_METHOD,
-  GAuth2Context
+  GAuth2Context,
+  CategoriesContext
 }

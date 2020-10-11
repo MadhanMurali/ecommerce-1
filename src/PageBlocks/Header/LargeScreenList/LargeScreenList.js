@@ -16,7 +16,7 @@ const LargeScreenList = ({button_color_class}) => {
     const user = useSelector(state => state.user);
 
     const profilePic =  (!user.image_address)
-                            ? <i class="material-icons">account_circle</i>
+                            ? <i className="material-icons">account_circle</i>
                             : <img className="center-profile-image" src = {user.image_address} alt=""/>;
 
     const signOutButton = (user.social_id_type === SIGN_IN_METHOD.GOOGLE)

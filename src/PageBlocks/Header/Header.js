@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
@@ -18,26 +18,18 @@ import AnchorButton from '../../Utilities/Link/AnchorButton/AnchorButton';
 import CategoriesResponsive from './Categories/CategoriesResponsive/CategoriesResponsive';
 import Prescription from './prescription/prescription';
 import { HOME } from '../../Globals/PathConstants';
+import { CategoriesContext } from '../../Globals/Config';
 
 
 const API = "http://localhost:3000/"
 
 const Header = () => {
 
-    const [categories, setCategories] = useState("");
-    const [categoriesLoading, setCategoriesLoading] = useState(true);
     const [prescriptionLoading, setPrescriptionLoading] = useState(true);
 
     const [value, setValue] = useState("");
-    useEffect( () => {
-        fetch(API + "categories")
-            .then(response => response.json())
-            .then(json =>{
-                setCategories(json);
-                setCategoriesLoading(false);
-            });
-    }, []);
 
+    const categories = useContext(CategoriesContext);
   
     const search_products = (search) => {
         console.log("searching products", search);
@@ -94,7 +86,7 @@ const Header = () => {
                                 href="#prescription-modal"
                                 using_router={false}
                             />
-                            {/* <a class="waves-effect waves-light btn-medium"><i class="material-icons right">cloud_upload</i>Upload</a> */}
+                            {/* <a className="waves-effect waves-light btn-medium"><i className="material-icons right">cloud_upload</i>Upload</a> */}
 
         
                         </div>
@@ -102,9 +94,7 @@ const Header = () => {
                 </div>
 
                 <div className="nav-content categories-nav">
-                    { (categoriesLoading !== true) && 
-                        <Categories categories={categories}/>
-                    }
+                    <Categories categories={categories}/>
                 </div>                
             </nav>
 
@@ -118,9 +108,7 @@ const Header = () => {
                 />
             </div>
 
-            { (categoriesLoading !== true) && 
-                <CategoriesResponsive categories={categories} />
-            }
+            <CategoriesResponsive categories={categories} />
             <Prescription />
         </header>
     );

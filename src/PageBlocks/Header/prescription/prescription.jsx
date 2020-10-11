@@ -10,7 +10,7 @@ import ImageUploader from 'react-images-upload';
 //     if (pictures) {
 //         return (
 //             <div className="col s12 m6 l4" style={{'text-align':'center'}}>
-//         <a class="waves-effect waves-light btn">Submit</a>
+//         <a className="waves-effect waves-light btn">Submit</a>
 //         </div>
 //         )
 //     }

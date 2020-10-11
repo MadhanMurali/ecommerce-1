@@ -125,10 +125,10 @@ export default class ReviewOrder extends Component {
                             onEnterPromoCode={this.onEnterPromoCode}
                             checkPromoCode={this.checkPromoCode}
                         />
-                        <form class="col s12" method="post"  onSubmit={this.handleSubmit}>
+                        <form className="col s12" method="post"  onSubmit={this.handleSubmit}>
                         
-                            <div class="row center-align">
-                                <button type='submit' name='btn_login' class=' btn btn-large waves-effect indigo center-align'>Place Order</button>
+                            <div className="row center-align">
+                                <button type='submit' name='btn_login' className=' btn btn-large waves-effect indigo center-align'>Place Order</button>
                             </div>
                         </form>
                     </div>

@@ -16,13 +16,7 @@ import "./signup_sm.css";
 import "materialize-css/dist/css/materialize.min.css";
 import GoogleLogin from "../../PageBlocks/GoogleAccount/LogIn/LogIn";
 import { SIGNIN } from "../../Globals/PathConstants";
-
-const SIGN_IN_MUTATION = `mutation SignUpAction($first_name: String, $last_name: String, $email_id: String, $client_ip: String, $request_token: String, $mobile_no1: String) {
-    SignUpAction(first_name: $first_name, last_name: $last_name, email_id: $email_id, client_ip: $client_ip, request_token: $request_token, mobile_no1: $mobile_no1) {
-        message,
-        token,
-    }
-}`;
+import { SIGN_UP_MUTATION } from "../../Globals/Graphql/MutationTemplates/Account";
 
 class SignupSM extends Component {
     constructor() {
@@ -61,7 +55,7 @@ class SignupSM extends Component {
                 last_name: this.state.input["last_name"],
                 email_id: this.state.input["email"],
                 password: this.state.input["confirm_password"],
-                mobile_no: this.state.input["telephone"],
+                mobile_no1: this.state.input["telephone"],
                 client_ip: await getClientIp(),
                 request_token: getRequestToken(),
             }
@@ -76,7 +70,7 @@ class SignupSM extends Component {
                     'Accept': 'application/json',
                 },
                 body: JSON.stringify({
-                    query: SIGN_IN_MUTATION,
+                    query: SIGN_UP_MUTATION,
                     variables: signInMutationVariables,
                 })
             })
@@ -94,6 +88,7 @@ class SignupSM extends Component {
                     alert('Account created');
                 }
                 else {
+                    console.log("sign up", signInMutationVariables);
                     throw(response.data.SignUpAction['message']);
                 }
             })

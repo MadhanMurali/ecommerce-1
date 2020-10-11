@@ -14,16 +14,7 @@ const API = "http://localhost:3000/"
 
 const CategoriesResponsive = ({categories}) => {
 
-    const [subCategories, setSubCategories] = useState("");
-    const [subCategoriesLoading, setSubCategoriesLoading] = useState(true);
-
     useEffect( () => {
-        fetch(API + "sub-categories")
-            .then(response => response.json())
-            .then(json =>{
-                setSubCategories(json);
-                setSubCategoriesLoading(false);
-                });
         let elems = document.querySelectorAll('.modal');
         let options = {
             inDuration: 100,
@@ -32,21 +23,20 @@ const CategoriesResponsive = ({categories}) => {
         M.Modal.init(elems, options);
     }, [])
 
-    const categoriesResponsive = categories.map(
+    const categoriesResponsive = categories.getCategory.map(
         category => {
             return (
                 <>
-                    { (subCategoriesLoading !== true) && 
-                        <CollapsibleListWithLinks
-                            list={subCategories}
-                            item_bullet_style={"bubble_chart"}
-                            heading={category.name}
-                            heading_color_class={"black-text"}
-                            heading_bullet_style={""}
-                            content_color={"black-text"}
-                            using_router={false}
-                        />
-                    }
+                    <CollapsibleListWithLinks
+                        list={category.itemSubCategory}
+                        item_bullet_style={"bubble_chart"}
+                        heading={category.item_category_name}
+                        heading_color_class={"black-text"}
+                        heading_bullet_style={""}
+                        content_color={"black-text"}
+                        using_router={false}
+                        field_name={"item_sub_category_name"}
+                    />
                 </>
             )
         }

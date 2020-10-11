@@ -61,7 +61,7 @@
                     sub_category => <AnchorWithLi 
                                         key={sub_category.id}
                                         link_color_class={"black-text"}
-                                        title={sub_category.name} href={""}
+                                        title={sub_category.item_sub_category_name} href={""}
                                     />
                 )
         );

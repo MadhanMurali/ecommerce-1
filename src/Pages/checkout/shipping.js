@@ -173,24 +173,24 @@ export default class Shipping extends Component {
     }
     render() {
         return (
-            <div class="container">
+            <div className="container">
                
                 
 
-                <div class="row">
-                    <div class="col s12  m12 l12 ">
+                <div className="row">
+                    <div className="col s12  m12 l12 ">
                         
                          
-                            <h5 class="indigo-text">    Enter a new delivery address   </h5>
+                            <h5 className="indigo-text">    Enter a new delivery address   </h5>
                             <p>All fields are mandatory</p>
                             
-                                <div class="z-depth-3 grey lighten-4 row formGroup" >
+                                <div className="z-depth-3 grey lighten-4 row formGroup" >
 
-                                    <form class="col s12" method="post"  onSubmit={this.handleSubmit}>
+                                    <form className="col s12" method="post"  onSubmit={this.handleSubmit}>
                                         
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                            <i class="material-icons prefix">place</i>
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                            <i className="material-icons prefix">place</i>
                                                 <select>
                                                     <option value="" disabled selected>Choose your country</option>
                                                         <option value="1">Option 1</option>
@@ -203,73 +203,73 @@ export default class Shipping extends Component {
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="input-field col s12">
+                                        <div className="row">
+                                            <div className="input-field col s12">
                                                 
-                                                <i class="material-icons prefix iconColor">account_circle</i>
-                                                <input id='full_name' type='text' name='full_name' class='validate'  value={this.state.input.full_name}
+                                                <i className="material-icons prefix iconColor">account_circle</i>
+                                                <input id='full_name' type='text' name='full_name' className='validate'  value={this.state.input.full_name}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.full_name}</div>
                                                 <label for="full_name">Full Name</label>
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                                <div class="input-field col s12">
-                                                    <i class="material-icons prefix">phone</i>
-                                                    <input id='telephone' name='telephone' type='tel' class='validate ' value={this.state.input.telephone}
+                                        <div className="row">
+                                                <div className="input-field col s12">
+                                                    <i className="material-icons prefix">phone</i>
+                                                    <input id='telephone' name='telephone' type='tel' className='validate ' value={this.state.input.telephone}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.telephone}</div>
                                                     <label for='telephone'>Mobile No.</label>
                                                 </div>
                                             </div>
 
-                                            <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">home</i>
-                                                <input id='house' type='text' name='house' class='validate ' value={this.state.input.house}
+                                            <div className="row">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix">home</i>
+                                                <input id='house' type='text' name='house' className='validate ' value={this.state.input.house}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.house}</div>
                                                 <label for='house'>Flat, House No., Building, Comapny, Apartment</label>
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">house</i>
-                                                <input id='area' type='text' name='area' class='validate ' value={this.state.input.area}
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix">house</i>
+                                                <input id='area' type='text' name='area' className='validate ' value={this.state.input.area}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.area}</div>
                                                 <label for='area'>Area, Colony, Street, Sector, Village</label>
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">business</i>
-                                                <input id='landmark' type='text' name='landmark' class='validate ' value={this.state.input.landmark}
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix">business</i>
+                                                <input id='landmark' type='text' name='landmark' className='validate ' value={this.state.input.landmark}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.landmark}</div>
                                                 <label for='landmark'>Landmark(Eg. Near hospital, school etc..)</label>
                                             </div>
                                         </div>
 
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">location_city</i>
-                                                <input id='city' type='text' name='city' class='validate ' value={this.state.input.city}
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix">location_city</i>
+                                                <input id='city' type='text' name='city' className='validate ' value={this.state.input.city}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.city}</div>
                                                 <label for='city'>Town/City</label>
                                             </div>
                                         </div>
 
-                                        {/* <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">place</i>
-                                                <input id='ztate' type='text' name='state' class='validate ' value={this.state.input.ztate}
+                                        {/* <div className="row">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix">place</i>
+                                                <input id='ztate' type='text' name='state' className='validate ' value={this.state.input.ztate}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.ztate}</div>
                                                 <label for='ztate'>State</label>
                                             </div>
                                         </div> */}
 
-                                        <div class="row">
-                                            <div class="input-field col s12">
-                                            <i class="material-icons prefix">place</i>
+                                        <div className="row">
+                                            <div className="input-field col s12">
+                                            <i className="material-icons prefix">place</i>
                                                 <select>
                                                     <option value="" disabled selected>Choose your State</option>
                                                         <option value="1">Option 1</option>
@@ -282,17 +282,17 @@ export default class Shipping extends Component {
                                             </div>
                                         </div>
 
-                                            <div class="row">
-                                            <div class="input-field col s12">
-                                                <i class="material-icons prefix">place</i>
-                                                <input id='pincode' type='text' name='pincode' class='validate ' value={this.state.input.pincode}
+                                            <div className="row">
+                                            <div className="input-field col s12">
+                                                <i className="material-icons prefix">place</i>
+                                                <input id='pincode' type='text' name='pincode' className='validate ' value={this.state.input.pincode}
                                                     onChange={this.handleChange} /><div className='red-text'>{this.state.errors.pincode}</div>
                                                 <label for='pincode'>PinCode</label>
                                             </div>
                                         </div>
 
-                                        <div class="row center-align">
-                                            <button type='submit' name='btn_login' class=' btn btn-large waves-effect indigo center-align'>Continue with Payment</button>
+                                        <div className="row center-align">
+                                            <button type='submit' name='btn_login' className=' btn btn-large waves-effect indigo center-align'>Continue with Payment</button>
                                         </div>
 
                                         

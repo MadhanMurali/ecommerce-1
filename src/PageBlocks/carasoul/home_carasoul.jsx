@@ -94,10 +94,14 @@ class HomeCarasoul extends React.Component {
         </div>
       );
     };
-    const categories = images.map((each, index) => (
+    let categories = this.props.categories.getCategory.map((category, index) => (
      
-      <CategoryItem  key={index}  {...each} />
-   ));
+      <CategoryItem 
+        key={category.id}
+        name={category.item_category_name}
+        url={category.image_address}
+      />
+    ));
     return (
       <Carousel
         // ssr={false}
@@ -137,8 +141,8 @@ class HomeCarasoul extends React.Component {
   >
  {categories}
     
-         {/* <div class="image-container increase-size">
-          <div class="image-container-text">
+         {/* <div className="image-container increase-size">
+          <div className="image-container-text">
             <p>1</p>
           </div>
           <img
@@ -147,8 +151,8 @@ class HomeCarasoul extends React.Component {
             src="https://images.unsplash.com/photo-1549989476-69a92fa57c36?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
           />
         </div> */}
-        {/*<div class="increase-size">
-          <div class="image-container-text">
+        {/*<div className="increase-size">
+          <div className="image-container-text">
             <p>2</p>
           </div>
           <img
@@ -158,8 +162,8 @@ class HomeCarasoul extends React.Component {
           />
         </div>
 
-        <div class="image-container increase-size">
-          <div class="image-container-text">
+        <div className="image-container increase-size">
+          <div className="image-container-text">
             <p>3</p>
           </div>
           <img
@@ -169,8 +173,8 @@ class HomeCarasoul extends React.Component {
           />
         </div>
 
-        <div class="image-container increase-size">
-          <div class="image-container-text">
+        <div className="image-container increase-size">
+          <div className="image-container-text">
             <p>4</p>
           </div>
           <img
@@ -180,8 +184,8 @@ class HomeCarasoul extends React.Component {
           />
         </div>
 
-        <div class="image-container increase-size">
-          <div class="image-container-text">
+        <div className="image-container increase-size">
+          <div className="image-container-text">
             <p>5</p>
           </div>
           <img
@@ -191,8 +195,8 @@ class HomeCarasoul extends React.Component {
           />
         </div>
 
-        <div class="image-container increase-size">
-          <div class="image-container-text">
+        <div className="image-container increase-size">
+          <div className="image-container-text">
             <p>6</p>
           </div>
           <img

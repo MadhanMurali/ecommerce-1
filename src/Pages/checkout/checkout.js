@@ -16,14 +16,14 @@ export default class CheckOut extends Component {
 
 
 
-        <div class="row">
-          <div class="col s12 sno-pd ">
-            <ul class="tabs stabs-icon" ref={Tabs => {
+        <div className="row">
+          <div className="col s12 sno-pd ">
+            <ul className="tabs stabs-icon" ref={Tabs => {
             this.Tabs = Tabs;
           }}>
-              <li class="tab col s3"><a class="active" href="#shipping-adrs" ><i class="material-icons">local_shipping</i>Shipping Address</a></li>
-              <li class="tab col s3"><a href="#order-review"><i class="material-icons">shopping_bag</i>Review your Order</a></li>
-              <li class="tab col s3"><a href="#payment-details"><i class="material-icons">payment</i>Payment Details</a></li>
+              <li className="tab col s3"><a className="active" href="#shipping-adrs" ><i className="material-icons">local_shipping</i>Shipping Address</a></li>
+              <li className="tab col s3"><a href="#order-review"><i className="material-icons">shopping_bag</i>Review your Order</a></li>
+              <li className="tab col s3"><a href="#payment-details"><i className="material-icons">payment</i>Payment Details</a></li>
               
 
             </ul>

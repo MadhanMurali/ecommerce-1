@@ -7,7 +7,7 @@ function ProductList(props) {
       
     return (
       <div>
-        <div class="centered wish-container">
+        <div className="centered wish-container">
           <div className="cart-products">
               <table >
             {props.products.map((product, index) => {
@@ -23,19 +23,19 @@ function ProductList(props) {
                                         <tr><td className="cart-detail cart-name"><a href="#">{product.name}</a></td></tr>
                                         <tr><td className="cart-detail cart-name" ><a href="#">{formatCurrency(product.price)}</a></td></tr>
                                         
-                                        <tr class="hide-on-med-and-down"> <button class="waves-effect waves-light btn green ">
-                                            <i class="material-icons left" >add_shopping_cart</i>Add to Cart
+                                        <tr className="hide-on-med-and-down"> <button className="waves-effect waves-light btn green ">
+                                            <i className="material-icons left" >add_shopping_cart</i>Add to Cart
                                             </button> &nbsp; &nbsp;
-                                                <button class="waves-effect waves-light btn red">
-                                                    <i class="material-icons left" onClick={props.onRemoveProduct.bind(this, index)}>delete</i>Remove
+                                                <button className="waves-effect waves-light btn red">
+                                                    <i className="material-icons left" onClick={props.onRemoveProduct.bind(this, index)}>delete</i>Remove
                                                 </button>
                                          </tr>
 
-                                         <tr class="hide-on-large-only"> <button class="btn-floating green ">
-                                            <i class="material-icons left" >add_shopping_cart</i>Add to Cart
+                                         <tr className="hide-on-large-only"> <button className="btn-floating green ">
+                                            <i className="material-icons left" >add_shopping_cart</i>Add to Cart
                                             </button> &nbsp; &nbsp;
-                                                <button class="btn-floating red">
-                                                    <i class="material-icons left" onClick={props.onRemoveProduct.bind(this, index)}>delete</i>Remove
+                                                <button className="btn-floating red">
+                                                    <i className="material-icons left" onClick={props.onRemoveProduct.bind(this, index)}>delete</i>Remove
                                                 </button>
                                          </tr>
                                         
@@ -63,8 +63,8 @@ function ProductList(props) {
         </div>
         
         <div className="wish-container right-align">
-            <Link to="/cart" class="waves-effect waves-light btn ">
-                <i class="material-icons right" >shopping_cart</i> Goto Cart</Link>
+            <Link to="/cart" className="waves-effect waves-light btn ">
+                <i className="material-icons right" >shopping_cart</i> Goto Cart</Link>
              </div>
     </div>
      );
@@ -142,7 +142,7 @@ function ProductList(props) {
               <div className="cart-empty-product">
                 <h3>There are no products in your wishlist.</h3>
                 <button className="cart-button">Shop now</button>
-                <div class="section"></div>
+                <div className="section"></div>
               </div>
             )}
             
